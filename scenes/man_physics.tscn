@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqgo0rwa4ybkx"]
+
+[ext_resource type="Script" uid="uid://ukg8fin0xasg" path="res://script/person_physics.gd" id="1_6fgls"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e8mgr"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6fgls"]
+radius = 2.182129
+height = 12.895752
+
+[node name="Person" type="RigidBody3D"]
+mass = 0.01
+physics_material_override = SubResource("PhysicsMaterial_e8mgr")
+script = ExtResource("1_6fgls")
+metadata/_custom_type_script = "uid://bvc0e8o5reuel"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.343628, 0)
+shape = SubResource("CapsuleShape3D_6fgls")

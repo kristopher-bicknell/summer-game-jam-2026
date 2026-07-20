@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtux1dbyo62n0"]
+
+[ext_resource type="PackedScene" uid="uid://texdxws7m2ae" path="res://assets/man.glb" id="1_gm3yb"]
+[ext_resource type="Script" uid="uid://cbprb2m5u64od" path="res://script/person.gd" id="2_fo7j3"]
+[ext_resource type="Shader" uid="uid://cfd06tbvmjnar" path="res://assets/resource/toon.gdshader" id="3_fo7j3"]
+[ext_resource type="Texture2D" uid="uid://cab7brxstswrk" path="res://assets/man/man_business1.png" id="4_pgnoa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgnoa"]
+render_priority = 0
+shader = ExtResource("3_fo7j3")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("4_pgnoa")
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 3
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/rim_color = Color(0, 0, 0, 1)
+shader_parameter/rim_width = 12.0
+
+[node name="man" instance=ExtResource("1_gm3yb")]
+script = ExtResource("2_fo7j3")
+
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/0/position = Vector3(0, 6.0365076, -0.3299488)
+bones/2/rotation = Quaternion(-0.07746412, 0, 0, 0.99699515)
+bones/3/rotation = Quaternion(0.0016271502, 0, 0, 0.9999987)
+bones/5/rotation = Quaternion(-0.046980996, -1.19077704e-07, -5.6005707e-09, 0.9988959)
+bones/7/rotation = Quaternion(0.1315547, 0.29256785, 0.14779481, 0.93555015)
+bones/8/rotation = Quaternion(0.8012806, -0.40428656, 0.2388528, 0.37074414)
+bones/9/rotation = Quaternion(0.15257111, -0.0127999745, -0.018017443, 0.9880454)
+bones/11/rotation = Quaternion(0.13155481, -0.29256776, -0.14779492, 0.93555015)
+bones/12/rotation = Quaternion(0.8012806, 0.40428656, -0.2388528, 0.37074414)
+bones/13/rotation = Quaternion(0.15257113, 0.012799986, 0.018017428, 0.9880454)
+bones/16/rotation = Quaternion(0.9850308, 0.053596675, -0.00889207, 0.16359378)
+bones/17/rotation = Quaternion(0.09434611, 0.0070997537, 0.036671575, 0.99483854)
+bones/18/rotation = Quaternion(-0.3828858, -0.12520139, -0.061931983, 0.9131744)
+bones/19/rotation = Quaternion(0.010696583, 0.9083547, -0.4180482, -0.003608669)
+bones/20/rotation = Quaternion(0.9850308, -0.053596675, 0.00889207, 0.16359378)
+bones/21/rotation = Quaternion(0.09434611, -0.0070997537, -0.036671575, 0.99483854)
+bones/22/rotation = Quaternion(-0.38288587, 0.12520133, 0.06193198, 0.9131744)
+bones/23/rotation = Quaternion(-0.010696583, 0.9083547, -0.41804823, 0.0036086643)
+
+[node name="Cube" parent="metarig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_pgnoa")

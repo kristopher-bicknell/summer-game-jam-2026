@@ -1,0 +1,114 @@
+[gd_scene load_steps=14 format=3 uid="uid://08vpwmoklkju"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="2_ppx82"]
+[ext_resource type="Script" uid="uid://q0xut2hwyv5x" path="res://script/car_controllertest.gd" id="2_ylhh0"]
+[ext_resource type="Material" uid="uid://dcgasbekaxcic" path="res://assets/car0texture.tres" id="3_nsw12"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ppx82"]
+bounce = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ylhh0"]
+radius = 4.7857857
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hr2si"]
+radius = 7.36595
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ylhh0"]
+radius = 4.6679688
+height = 14.30957
+
+[sub_resource type="BoxMesh" id="BoxMesh_ylhh0"]
+size = Vector3(0.4, 16, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hr2si"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsw12"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eiyat"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_eirlw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p36ri"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+
+[node name="Car" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_ppx82")
+script = ExtResource("2_ylhh0")
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+mesh = ExtResource("2_ppx82")
+surface_material_override/0 = ExtResource("3_nsw12")
+collision_layer = 0
+simulation_precision = 8
+linear_stiffness = 0.37
+pressure_coefficient = 0.97
+damping_coefficient = 0.0
+pinned_points = [385, 40, 246, 429]
+attachments/0/point_index = 385
+attachments/0/spatial_attachment_path = NodePath("..")
+attachments/0/offset = Vector3(0, 1.050412, 4.90617)
+attachments/1/point_index = 40
+attachments/1/spatial_attachment_path = NodePath("..")
+attachments/1/offset = Vector3(0, 0.655501, -6.894268)
+attachments/2/point_index = 246
+attachments/2/spatial_attachment_path = NodePath("..")
+attachments/2/offset = Vector3(0, -4.317438, -0.546915)
+attachments/3/point_index = 429
+attachments/3/spatial_attachment_path = NodePath("..")
+attachments/3/offset = Vector3(0, -4.317438, 1.81234)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35649073, 0)
+shape = SubResource("SphereShape3D_ylhh0")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_hr2si")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.4457326, 0.5883789)
+shape = SubResource("CapsuleShape3D_ylhh0")
+
+[node name="Z" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 8)
+mesh = SubResource("BoxMesh_ylhh0")
+surface_material_override/0 = SubResource("StandardMaterial3D_hr2si")
+
+[node name="Y" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 8, 0)
+mesh = SubResource("BoxMesh_ylhh0")
+surface_material_override/0 = SubResource("StandardMaterial3D_nsw12")
+
+[node name="X" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 3.821371e-15, 0, 8.742278e-08, -1, 8, 0, 0)
+mesh = SubResource("BoxMesh_ylhh0")
+surface_material_override/0 = SubResource("StandardMaterial3D_eiyat")
+
+[node name="Root" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_eirlw")
+surface_material_override/0 = SubResource("StandardMaterial3D_p36ri")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_body_exited"]

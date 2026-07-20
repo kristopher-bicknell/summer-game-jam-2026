@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://dacy56rncm5ti"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="1_qt2eu"]
+[ext_resource type="Script" uid="uid://q0xut2hwyv5x" path="res://script/car_controllertest.gd" id="2_qt2eu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qt2eu"]
+albedo_color = Color(1, 0.176471, 0, 1)
+metallic = 0.79
+roughness = 0.33
+clearcoat_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qt2eu"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qt2eu"]
+radius = 9.69238
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jtldb"]
+radius = 69.5403
+
+[node name="SoftBody3D" type="SoftBody3D"]
+mesh = ExtResource("1_qt2eu")
+surface_material_override/0 = SubResource("StandardMaterial3D_qt2eu")
+parent_collision_ignore = NodePath("RigidBody3D")
+simulation_precision = 10
+total_mass = 15.01
+linear_stiffness = 0.3
+pressure_coefficient = 0.2
+damping_coefficient = 0.05
+drag_coefficient = 0.09
+pinned_points = [909, 562, 652, 401]
+attachments/0/point_index = 909
+attachments/0/spatial_attachment_path = NodePath("RigidBody3D")
+attachments/0/offset = Vector3(-3.34184, -0.350356, -0.950132)
+attachments/1/point_index = 562
+attachments/1/spatial_attachment_path = NodePath("RigidBody3D")
+attachments/1/offset = Vector3(3.34184, -0.350356, -0.950132)
+attachments/2/point_index = 652
+attachments/2/spatial_attachment_path = NodePath("RigidBody3D")
+attachments/2/offset = Vector3(0, 1.17079, 3.35926)
+attachments/3/point_index = 401
+attachments/3/spatial_attachment_path = NodePath("RigidBody3D")
+attachments/3/offset = Vector3(0, -4.31744, -0.546915)
+
+[node name="WindPivot" type="Node3D" parent="."]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_qt2eu")
+script = ExtResource("2_qt2eu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_qt2eu")
+
+[node name="windarea" type="Area3D" parent="RigidBody3D"]
+wind_source_path = NodePath("../../WindPivot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/windarea"]
+shape = SubResource("SphereShape3D_jtldb")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 145.0
+offset_bottom = 48.0

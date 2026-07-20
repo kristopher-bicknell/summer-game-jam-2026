@@ -1,0 +1,302 @@
+[gd_scene load_steps=29 format=3 uid="uid://cu1wx8yoag5pk"]
+
+[ext_resource type="Script" uid="uid://c8tto3cl7qepm" path="res://test_room.gd" id="1_ju58f"]
+[ext_resource type="PackedScene" uid="uid://cqs7wirp2qphh" path="res://scenes/camera.tscn" id="2_arrdh"]
+[ext_resource type="ArrayMesh" uid="uid://fmvglmhc26lk" path="res://assets/man/man_base.obj" id="3_arrdh"]
+[ext_resource type="Texture2D" uid="uid://u6k8r6c0ghta" path="res://assets/man/photographer.png" id="4_f0xav"]
+[ext_resource type="Script" uid="uid://q0xut2hwyv5x" path="res://script/car_controllertest.gd" id="4_sqxie"]
+[ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="5_sqxie"]
+[ext_resource type="Material" uid="uid://dcgasbekaxcic" path="res://assets/car0texture.tres" id="7_3vbl4"]
+[ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="8_3vbl4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqbmf"]
+specular_mode = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_ju58f"]
+material = SubResource("StandardMaterial3D_oqbmf")
+flip_faces = true
+size = Vector3(300, 100, 300)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqxie"]
+size = Vector3(300, 28.788086, 300)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oqbmf"]
+size = Vector2(500, 500)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_arrdh"]
+friction = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i507p"]
+shading_mode = 0
+albedo_texture = ExtResource("4_f0xav")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sqxie"]
+height = 9.462402
+radius = 1.6806641
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sqxie"]
+bounce = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bd7ek"]
+radius = 4.7857857
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f0xav"]
+radius = 4.6679688
+height = 14.30957
+
+[sub_resource type="BoxMesh" id="BoxMesh_bd7ek"]
+size = Vector3(0.4, 16, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0xav"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vbl4"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6r6vx"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i507p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2602c"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_6r6vx"]
+font = ExtResource("8_3vbl4")
+font_size = 48
+font_color = Color(1, 0, 0, 1)
+outline_size = 8
+
+[sub_resource type="Animation" id="Animation_85g3d"]
+resource_name = "hit_a_civillian"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fatality:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0667, 0.3333, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fatality:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_choun"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fatality:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fatality:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ya4ey"]
+_data = {
+&"RESET": SubResource("Animation_choun"),
+&"hit_a_civillian": SubResource("Animation_85g3d")
+}
+
+[node name="TestRoom" type="Node3D" node_paths=PackedStringArray("car_root")]
+script = ExtResource("1_ju58f")
+car_root = NodePath("Rotator")
+
+[node name="Room" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.844933, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09768677)
+mesh = SubResource("BoxMesh_ju58f")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -63.860992, 0)
+shape = SubResource("BoxShape3D_sqxie")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -63.860992, 164.67763)
+shape = SubResource("BoxShape3D_sqxie")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -63.860992, -164.6776)
+shape = SubResource("BoxShape3D_sqxie")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Room"]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, 163.47223, -63.860992, 7.1990356)
+shape = SubResource("BoxShape3D_sqxie")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="Room"]
+transform = Transform3D(-4.371139e-08, 1, 4.371139e-08, 0, -4.371139e-08, 1, 1, 4.371139e-08, 1.9106855e-15, -163.74725, -63.860992, 7.1990356)
+shape = SubResource("BoxShape3D_sqxie")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 64.31116, 0)
+shape = SubResource("BoxShape3D_sqxie")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -49.32374, 0)
+mesh = SubResource("PlaneMesh_oqbmf")
+
+[node name="RaceCamera" parent="." instance=ExtResource("2_arrdh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.705025, 0)
+light_energy = 2.0
+light_specular = 16.0
+distance_fade_enabled = true
+distance_fade_begin = 0.0
+distance_fade_length = 4096.0
+omni_range = 435.39923
+
+[node name="RigidBody3D3" type="RigidBody3D" parent="."]
+transform = Transform3D(0.3729878, 0, 0.92783624, 0, 1, 0, -0.92783624, 0, 0.3729878, -36.769157, -8.41194, 36.003242)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_arrdh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3"]
+mesh = ExtResource("3_arrdh")
+surface_material_override/0 = SubResource("StandardMaterial3D_i507p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9581146, 0)
+shape = SubResource("CylinderShape3D_sqxie")
+
+[node name="RigidBody3D4" type="RigidBody3D" parent="."]
+transform = Transform3D(0.15005307, 0, 0.988678, 0, 1, 0, -0.988678, 0, 0.15005307, -36.769157, -8.41194, 46.194725)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_arrdh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D4"]
+mesh = ExtResource("3_arrdh")
+surface_material_override/0 = SubResource("StandardMaterial3D_i507p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9581146, 0)
+shape = SubResource("CylinderShape3D_sqxie")
+
+[node name="RigidBody3D5" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.07701482, 0, 0.99702996, 0, 1, 0, -0.99702996, 0, -0.07701482, -36.769157, -8.41194, 57.10463)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_arrdh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D5"]
+mesh = ExtResource("3_arrdh")
+surface_material_override/0 = SubResource("StandardMaterial3D_i507p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9581146, 0)
+shape = SubResource("CylinderShape3D_sqxie")
+
+[node name="Rotator" type="RigidBody3D" parent="." node_paths=PackedStringArray("_camera_pivot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.797707, -2.172947, 53.470215)
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_sqxie")
+script = ExtResource("4_sqxie")
+_camera_pivot = NodePath("../RaceCamera")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotator"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.356, 0)
+shape = SubResource("SphereShape3D_bd7ek")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotator"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mesh = ExtResource("5_sqxie")
+surface_material_override/0 = ExtResource("7_3vbl4")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Rotator"]
+transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0, -1.4457326, 0.5883789)
+shape = SubResource("CapsuleShape3D_f0xav")
+
+[node name="Z" type="MeshInstance3D" parent="Rotator"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 8)
+mesh = SubResource("BoxMesh_bd7ek")
+surface_material_override/0 = SubResource("StandardMaterial3D_f0xav")
+
+[node name="Y" type="MeshInstance3D" parent="Rotator"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 8, 0)
+mesh = SubResource("BoxMesh_bd7ek")
+surface_material_override/0 = SubResource("StandardMaterial3D_3vbl4")
+
+[node name="X" type="MeshInstance3D" parent="Rotator"]
+transform = Transform3D(-4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 3.821371e-15, 0, 8.742278e-08, -1, 8, 0, 0)
+mesh = SubResource("BoxMesh_bd7ek")
+surface_material_override/0 = SubResource("StandardMaterial3D_6r6vx")
+
+[node name="Root" type="MeshInstance3D" parent="Rotator"]
+mesh = SubResource("SphereMesh_i507p")
+surface_material_override/0 = SubResource("StandardMaterial3D_2602c")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Fatality" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = 36.0
+offset_right = 193.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "OH THE HUMANITY!
++10 PTS"
+label_settings = SubResource("LabelSettings_6r6vx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ya4ey")
+}

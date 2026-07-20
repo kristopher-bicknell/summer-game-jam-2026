@@ -1,0 +1,733 @@
+[gd_scene load_steps=41 format=3 uid="uid://ddkwtah51na35"]
+
+[ext_resource type="Script" uid="uid://fm837n0m55lj" path="res://script/title_screen.gd" id="1_3yumr"]
+[ext_resource type="ArrayMesh" uid="uid://ds0fkia5t6otr" path="res://assets/titlescreen/logo.obj" id="1_dc4i4"]
+[ext_resource type="ArrayMesh" uid="uid://cyqp14gmitq6l" path="res://assets/titlescreen/building.obj" id="2_e54dn"]
+[ext_resource type="ArrayMesh" uid="uid://cl0ge57j88kil" path="res://assets/titlescreen/glass.obj" id="3_3yumr"]
+[ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="4_cs5ya"]
+[ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="6_3yumr"]
+[ext_resource type="Texture2D" uid="uid://cs72buvsbw8rp" path="res://assets/titlescreen/nyc.jpg" id="6_e54dn"]
+[ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="8_cs5ya"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tklts"]
+shading_mode = 2
+disable_ambient_light = true
+albedo_color = Color(1, 0.16470589, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_dc4i4"]
+colors = PackedColorArray(0.9428228, 0.94282264, 0.94282264, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e54dn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3yumr"]
+noise = SubResource("FastNoiseLite_e54dn")
+color_ramp = SubResource("Gradient_dc4i4")
+bump_strength = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cs5ya"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mykxm"]
+noise = SubResource("FastNoiseLite_cs5ya")
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u26n3"]
+albedo_color = Color(0.80784315, 0.7921569, 0.73333335, 1)
+albedo_texture = SubResource("NoiseTexture2D_3yumr")
+normal_texture = SubResource("NoiseTexture2D_mykxm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ib7db"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+albedo_color = Color(1, 0.77254903, 0.3372549, 0.42745098)
+metallic = 0.85
+roughness = 0.0
+clearcoat_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_ib7db"]
+colors = PackedColorArray(0.9428228, 0.94282264, 0.94282264, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_frs5l"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mynnq"]
+noise = SubResource("FastNoiseLite_frs5l")
+color_ramp = SubResource("Gradient_ib7db")
+bump_strength = 2.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e8tpv"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4qe4i"]
+noise = SubResource("FastNoiseLite_e8tpv")
+as_normal_map = true
+bump_strength = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_frs5l"]
+albedo_color = Color(0.6722083, 0.6602479, 0.55208236, 1)
+albedo_texture = SubResource("NoiseTexture2D_mynnq")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_4qe4i")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mynnq"]
+albedo_color = Color(0.19416773, 0.2469882, 0.31180614, 1)
+metallic = 0.89
+roughness = 0.24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8tpv"]
+albedo_color = Color(1, 1, 0.4862745, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4qe4i"]
+material = SubResource("StandardMaterial3D_e8tpv")
+size = Vector2(24.13, 24.315)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khjys"]
+albedo_color = Color(0.19416773, 0.2469882, 0.31180614, 1)
+metallic = 0.89
+roughness = 0.24
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_174rq"]
+emission_shape = 3
+emission_box_extents = Vector3(0.56, 1.095, 0.315)
+direction = Vector3(-0.5, 0, 0.5)
+spread = 65.768
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 4.9999776
+gravity = Vector3(0, -20, 0)
+scale_min = 0.19999999
+scale_max = 0.79999995
+
+[sub_resource type="QuadMesh" id="QuadMesh_neciy"]
+material = SubResource("StandardMaterial3D_ib7db")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p07av"]
+load_path = "res://.godot/imported/car.png-d32f5b1402097a8b34a6ade6a9b7d527.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_khjys"]
+load_path = "res://.godot/imported/car_clearcoat.png-9d5216a9164c09f0be6d551572d151cd.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_174rq"]
+albedo_texture = SubResource("CompressedTexture2D_p07av")
+metallic = 1.0
+clearcoat_texture = SubResource("CompressedTexture2D_khjys")
+
+[sub_resource type="Animation" id="Animation_jr68i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.2170143, 0.028941631, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-6.0836945, -19.248512, -4.2151623)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Car:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.67572165, 0.76248217, -2.3872236e-08)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Car:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.20000002, 0.2, 0.20000002)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Glass:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles3D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainScreen/StartButton:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(718, 354)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MainScreen/SettingsButton:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(718, 467)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(6.125543, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MainScreen:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SettingsScreen:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1152, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w03br"]
+resource_name = "title_screen"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-110, 0.029, 0), Vector3(2.2170143, 0.028941631, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.49, 2.5, 3.299953),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.0836945, -19.248512, -4.2151623), Vector3(-6.0836945, -19.248512, -4.2151623), Vector3(-6.7817783, -1.7313995, -4.250949), Vector3(2.2570267, -0.32919025, 0.8808489)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Car:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.67572165, 0.76248217, -2.3872236e-08), Vector3(-0.6754425, 1.2102985, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Car:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.20000002, 0.2, 0.20000002)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Glass:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles3D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.5, 2.594611),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainScreen/StartButton:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MainScreen/SettingsButton:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MainScreen:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.75, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(469, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cs5ya"]
+resource_name = "to_main"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(6.125543, 0, 28.260704), Vector3(6.125543, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsScreen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1152, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainScreen:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3yumr"]
+resource_name = "to_settings"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(6.125543, 0, 0), Vector3(6.125543, 0, 28.260704)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainScreen:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1152, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SettingsScreen:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b344i"]
+_data = {
+&"RESET": SubResource("Animation_jr68i"),
+&"title_screen": SubResource("Animation_w03br"),
+&"to_main": SubResource("Animation_cs5ya"),
+&"to_settings": SubResource("Animation_3yumr")
+}
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3yumr"]
+size = Vector2(1000, 1000)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cs5ya"]
+albedo_texture = ExtResource("6_e54dn")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mykxm"]
+font = ExtResource("8_cs5ya")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tklts"]
+font = ExtResource("6_3yumr")
+font_size = 36
+
+[node name="TitleScreen" type="Node3D"]
+script = ExtResource("1_3yumr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6.125543, 0, 0)
+
+[node name="Logo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2170143, 0.028941631, 0)
+mesh = ExtResource("1_dc4i4")
+surface_material_override/0 = SubResource("StandardMaterial3D_tklts")
+
+[node name="Building" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.235, 0, 0, 0, 2.235, 0, 0, 0, 2.235, -4.2893085, 0, 0)
+mesh = ExtResource("2_e54dn")
+surface_material_override/0 = SubResource("StandardMaterial3D_u26n3")
+surface_material_override/1 = SubResource("StandardMaterial3D_ib7db")
+surface_material_override/2 = SubResource("StandardMaterial3D_frs5l")
+surface_material_override/3 = SubResource("StandardMaterial3D_mynnq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.115654, 0, -13.124633)
+mesh = SubResource("PlaneMesh_4qe4i")
+
+[node name="Building2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.235, 0, 0, 0, 2.235, 0, 0, 0, 2.235, -4.2893085, -15.7875805, 0)
+mesh = ExtResource("2_e54dn")
+surface_material_override/0 = SubResource("StandardMaterial3D_u26n3")
+surface_material_override/1 = SubResource("StandardMaterial3D_ib7db")
+surface_material_override/2 = SubResource("StandardMaterial3D_frs5l")
+surface_material_override/3 = SubResource("StandardMaterial3D_mynnq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0997097, 0, -13.124633)
+mesh = SubResource("PlaneMesh_4qe4i")
+
+[node name="Glass" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.235, 0, 0, 0, 2.235, 0, 0, 0, 2.235, -4.2893085, 0, 0)
+mesh = ExtResource("3_3yumr")
+surface_material_override/0 = SubResource("StandardMaterial3D_ib7db")
+surface_material_override/1 = SubResource("StandardMaterial3D_khjys")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.06314564, 0, 2.2341077, 0, 2.235, 0, -2.2341077, 0, 0.06314564, -4.822666, -1.5161988, -2.672795)
+emitting = false
+amount = 250
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_174rq")
+draw_pass_1 = SubResource("QuadMesh_neciy")
+
+[node name="Car" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.14462477, -0.08640343, 0.10778743, -3.7252903e-09, 0.15605116, 0.12509212, -0.1381437, -0.09045709, 0.11284431, -6.0836945, -19.248512, -4.2151623)
+mesh = ExtResource("4_cs5ya")
+surface_material_override/0 = SubResource("StandardMaterial3D_174rq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b344i")
+}
+autoplay = "title_screen"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.75240356, -0.60582566, 0.25858152, -2.7748914e-11, 0.3925619, 0.91972584, -0.6587027, -0.6920048, 0.29536495, 0, 0, 0)
+light_energy = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -286.787, -112.20099, 0)
+mesh = SubResource("PlaneMesh_3yumr")
+surface_material_override/0 = SubResource("StandardMaterial3D_cs5ya")
+
+[node name="MainScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -0.0012207031
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StartButton" type="Button" parent="MainScreen"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 354.0
+offset_right = 1075.0
+offset_bottom = 457.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("6_3yumr")
+theme_override_font_sizes/font_size = 36
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="MainScreen"]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 467.0
+offset_right = 1075.0
+offset_bottom = 570.0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("6_3yumr")
+theme_override_font_sizes/font_size = 25
+text = "SETTINGS"
+
+[node name="SettingsScreen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_right = -1152.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="SettingsScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -438.0
+offset_top = -245.0
+offset_right = 438.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -103.0
+offset_right = 279.0
+offset_bottom = -85.240265
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="SettingsScreen/Panel/VolumeSlider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_top = -37.0
+offset_right = 53.0
+offset_bottom = -14.0
+grow_horizontal = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_mykxm")
+horizontal_alignment = 1
+
+[node name="SensitivitySlider" type="HSlider" parent="SettingsScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -7.0
+offset_right = 279.0
+offset_bottom = 10.759735
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+value = 0.25
+
+[node name="Label" type="Label" parent="SettingsScreen/Panel/SensitivitySlider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = -37.0
+offset_right = 127.0
+offset_bottom = -14.0
+grow_horizontal = 2
+text = "Mouse Sensitivity"
+label_settings = SubResource("LabelSettings_mykxm")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="SettingsScreen/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.5
+offset_top = 33.0
+offset_right = 225.5
+offset_bottom = 68.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_tklts")
+
+[node name="AntiMurderButton" type="CheckButton" parent="SettingsScreen/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 45.0
+offset_right = 388.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("8_cs5ya")
+theme_override_constants/check_v_offset = -8
+text = "Disable photosensitive
+screen effects"
+
+[node name="EraseSaveDataButton" type="Button" parent="SettingsScreen/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -362.0
+offset_top = -202.0
+offset_right = -11.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_cs5ya")
+text = "Erase recorded times"
+
+[node name="MainMenuButton" type="Button" parent="SettingsScreen/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -202.0
+offset_top = -114.0
+offset_right = 202.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_cs5ya")
+theme_override_font_sizes/font_size = 20
+text = "return to main menu"
+
+[connection signal="pressed" from="MainScreen/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainScreen/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="value_changed" from="SettingsScreen/Panel/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="SettingsScreen/Panel/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="toggled" from="SettingsScreen/Panel/AntiMurderButton" to="." method="_on_anti_murder_button_toggled"]
+[connection signal="pressed" from="SettingsScreen/Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

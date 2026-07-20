@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cexru7if1pesb"]
+
+[ext_resource type="Script" uid="uid://bs4rf6xf15r52" path="res://script/screen_fx.gd" id="1_5brbr"]
+
+[node name="ScreenFX" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5brbr")

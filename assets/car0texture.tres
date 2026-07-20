@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dcgasbekaxcic"]
+
+[ext_resource type="Texture2D" uid="uid://e5wk7lk6ld8n" path="res://assets/car.png" id="1_i5ote"]
+[ext_resource type="Texture2D" uid="uid://bjh8fua3u31yo" path="res://assets/car_clearcoat.png" id="2_mf5c6"]
+
+[resource]
+albedo_texture = ExtResource("1_i5ote")
+metallic = 1.0
+clearcoat_enabled = true
+clearcoat_texture = ExtResource("2_mf5c6")

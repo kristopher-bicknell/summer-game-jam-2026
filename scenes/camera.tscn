@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://cqs7wirp2qphh"]
+
+[ext_resource type="Script" uid="uid://bfp3uiy70mto5" path="res://script/camera.gd" id="1_cvpoc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kod1s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cvpoc"]
+size = Vector3(1.16, 11.3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvpoc"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kod1s"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmlye"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cvpoc"]
+radius = 1.0
+height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtx3x"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+
+[node name="RaceCamera" type="Node3D"]
+script = ExtResource("1_cvpoc")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.62885e-08, 0.953717, 0.300706, 8.33766e-08, 0.300706, -0.953717, 0, 0, 0)
+shape = SubResource("SphereShape3D_kod1s")
+spring_length = 50.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+current = true
+
+[node name="Z" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 6)
+visible = false
+mesh = SubResource("BoxMesh_cvpoc")
+surface_material_override/0 = SubResource("StandardMaterial3D_cvpoc")
+
+[node name="Y" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 6, 0)
+visible = false
+mesh = SubResource("BoxMesh_cvpoc")
+surface_material_override/0 = SubResource("StandardMaterial3D_kod1s")
+
+[node name="X" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 3.821371e-15, 0, 8.742278e-08, -1, 6, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_cvpoc")
+surface_material_override/0 = SubResource("StandardMaterial3D_tmlye")
+
+[node name="Root" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_cvpoc")
+surface_material_override/0 = SubResource("StandardMaterial3D_gtx3x")

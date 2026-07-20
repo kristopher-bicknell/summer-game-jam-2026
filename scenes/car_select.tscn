@@ -1,0 +1,588 @@
+[gd_scene load_steps=37 format=3 uid="uid://dsuyfhpenijff"]
+
+[ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="1_46og1"]
+[ext_resource type="Script" uid="uid://ctrkj7rvbdtpf" path="res://script/car_select.gd" id="1_q6d0u"]
+[ext_resource type="Material" uid="uid://dcgasbekaxcic" path="res://assets/car0texture.tres" id="2_q6d0u"]
+[ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="4_wj4ei"]
+[ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="5_xf4j5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pytwq"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wj4ei"]
+material = SubResource("StandardMaterial3D_pytwq")
+flip_faces = true
+size = Vector3(71.115, 30, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wol1q"]
+albedo_color = Color(0.3665946, 0.3665946, 0.36659458, 1)
+metallic = 0.56
+roughness = 0.39
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xf4j5"]
+material = SubResource("StandardMaterial3D_wol1q")
+top_radius = 6.561
+bottom_radius = 8.81
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pytwq"]
+flip_faces = true
+top_radius = 25.0
+bottom_radius = 17.929
+height = 36.343
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wj4ei"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.22745098)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q6d0u"]
+flip_faces = true
+top_radius = 30.0
+bottom_radius = 25.96
+height = 36.343
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xf4j5"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 0.6745098)
+
+[sub_resource type="Animation" id="Animation_q6d0u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarDisplayPivot/Car1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CarDisplayPivot/Car2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.0943952, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CarDisplayPivot/Car3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.094395, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pytwq"]
+resource_name = "car0"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarDisplayPivot/Car1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ncmrg"]
+resource_name = "car0_select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarDisplayPivot/Car1:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.1415927, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wj4ei"]
+resource_name = "car1"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarDisplayPivot/Car2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.0943952, 0), Vector3(0, 5.2359877, 0), Vector3(0, 8.377581, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wvot5"]
+resource_name = "car1_select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarDisplayPivot/Car2:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.0943952, 0), Vector3(0, 5.2359877, 0), Vector3(0, 8.377581, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xf4j5"]
+resource_name = "car2"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarDisplayPivot/Car3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -2.094395, 0), Vector3(0, 1.0471976, 0), Vector3(0, 4.1887903, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_obyqk"]
+resource_name = "car2_select"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CarDisplayPivot/Car3:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -2.094395, 0), Vector3(0, 1.0471976, 0), Vector3(0, 4.1887903, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wol1q"]
+_data = {
+&"RESET": SubResource("Animation_q6d0u"),
+&"car0": SubResource("Animation_pytwq"),
+&"car0_select": SubResource("Animation_ncmrg"),
+&"car1": SubResource("Animation_wj4ei"),
+&"car1_select": SubResource("Animation_wvot5"),
+&"car2": SubResource("Animation_xf4j5"),
+&"car2_select": SubResource("Animation_obyqk")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wol1q"]
+bg_color = Color(0.6, 0.6, 0.6, 0.22745098)
+skew = Vector2(0.07, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_ncmrg"]
+font = ExtResource("4_wj4ei")
+font_size = 40
+font_color = Color(0.8627451, 0, 0, 1)
+outline_size = 15
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.6627451)
+shadow_offset = Vector2(8.52, 7.01)
+stacked_outline_count = 1
+stacked_shadow_count = 1
+stacked_outline_0/size = 15
+stacked_shadow_0/offset = Vector2(12, 11)
+stacked_shadow_0/color = Color(0, 0, 0, 0.41568628)
+
+[sub_resource type="SystemFont" id="SystemFont_wvot5"]
+font_names = PackedStringArray("Bahnschrift")
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_obyqk"]
+base_font = SubResource("SystemFont_wvot5")
+variation_embolden = 1.08
+variation_transform = Transform2D(1, 0.425, 0, 1, 0, 0)
+spacing_glyph = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gelk"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+skew = Vector2(0.25, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8745o"]
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.25, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="FontVariation" id="FontVariation_wj4ei"]
+base_font = ExtResource("5_xf4j5")
+variation_transform = Transform2D(1, 0.395, 0, 1.85, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6j3tn"]
+font = SubResource("FontVariation_wj4ei")
+font_size = 30
+font_color = Color(0, 0.4392157, 0, 1)
+outline_size = 16
+stacked_outline_count = 1
+stacked_outline_0/size = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wj4ei"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8039216, 0, 0, 0.5686275)
+skew = Vector2(0.375, 0)
+border_width_left = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xf4j5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.5647059, 0, 0, 0.5686275)
+skew = Vector2(0.375, 0)
+border_width_left = 3
+border_width_bottom = 3
+border_color = Color(0.6039216, 0.6039216, 0.6039216, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ncmrg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8901961, 0, 0, 0.5686275)
+skew = Vector2(0.375, 0)
+border_width_left = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 5
+
+[sub_resource type="FontVariation" id="FontVariation_xf4j5"]
+variation_transform = Transform2D(1, 0, 0, 1.645, 0, 0)
+baseline_offset = 0.15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvot5"]
+bg_color = Color(0.6, 0.6, 0.6, 0.22745098)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obyqk"]
+bg_color = Color(0.3515629, 0.35156292, 0.35156274, 0.22745098)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6j3tn"]
+bg_color = Color(0.86898494, 0.8689849, 0.8689849, 0.22745098)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="CarSelect" type="Node3D"]
+script = ExtResource("1_q6d0u")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.92459923, 0.17230955, -0.33974364, 0, 0.8918529, 0.4523257, 0.38094133, -0.41821998, 0.8246065, -13.336306, 2.2915552, 11.043025)
+
+[node name="Backdrop" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055488586, 8.174828, -0.024877548)
+layers = 512
+mesh = SubResource("BoxMesh_wj4ei")
+
+[node name="DisplayPlatform" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.013357, 0)
+mesh = SubResource("CylinderMesh_xf4j5")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-3.5174875e-08, 0.5936718, 0.80470735, 2.5950216e-08, 0.80470735, -0.5936718, -1, 0, -4.3711392e-08, 6.7922325, -4.7367444, 0)
+light_specular = 16.0
+spot_range = 8.665398
+spot_angle = 28.125002
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-4.371139e-08, -0.5934189, -0.80489385, 0, 0.80489385, -0.5934189, 1, -2.5939165e-08, -3.5183024e-08, -6.792, -4.737, 0)
+light_specular = 16.0
+spot_range = 8.665398
+spot_angle = 28.125002
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(-1, -2.595022e-08, -7.888626e-08, 2.5950214e-08, 0.80470735, -0.5936718, 7.888626e-08, -0.5936718, -0.80470735, 0, -4.737, -7.882)
+light_specular = 16.0
+spot_range = 8.665398
+spot_angle = 28.125002
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 0.8048938, -0.5934189, 0, 0.5934189, 0.8048938, 0, -4.737, 7.882)
+light_specular = 16.0
+spot_range = 8.665398
+spot_angle = 28.125002
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.114127, 0)
+light_energy = 5.0
+spot_range = 19.520063
+spot_angle = 47.243492
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8206778, 0)
+light_energy = 10.0
+omni_range = 50.0
+
+[node name="CarDisplayPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.477049)
+
+[node name="Car1" type="MeshInstance3D" parent="CarDisplayPivot"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1.7977979, 13.477049)
+mesh = ExtResource("1_46og1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_q6d0u")
+
+[node name="Car2" type="MeshInstance3D" parent="CarDisplayPivot"]
+transform = Transform3D(-0.25000003, 0, 0.4330127, 0, 0.5, 0, -0.4330127, 0, -0.25000003, 11.608044, -1.7977979, -6.922533)
+mesh = ExtResource("1_46og1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_q6d0u")
+
+[node name="Car3" type="MeshInstance3D" parent="CarDisplayPivot"]
+transform = Transform3D(-0.24999993, 0, -0.43301275, 0, 0.5, 0, 0.43301275, 0, -0.24999993, -11.484781, -1.7977979, -6.922533)
+mesh = ExtResource("1_46og1")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_q6d0u")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9666984, 0, -0.25591817, 0.050881818, 0.9800359, 0.19219959, 0.250809, -0.1988206, 0.94739914, 0, 0, 11.844934)
+mesh = SubResource("CylinderMesh_pytwq")
+surface_material_override/0 = SubResource("StandardMaterial3D_wj4ei")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9666984, 0, -0.25591817, 0.050881818, 0.9800359, 0.19219959, 0.250809, -0.1988206, 0.94739914, 0, 0, 11.844934)
+mesh = SubResource("CylinderMesh_q6d0u")
+surface_material_override/0 = SubResource("StandardMaterial3D_xf4j5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wol1q")
+}
+speed_scale = 0.5
+
+[node name="UIPanel" type="Panel" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = -59.0
+offset_right = 434.0
+offset_bottom = 239.0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wol1q")
+
+[node name="Title" type="Label" parent="UIPanel"]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -248.0
+offset_right = 1133.0
+offset_bottom = -174.72903
+text = "SELECT YOUR CAR"
+label_settings = SubResource("LabelSettings_ncmrg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="RichTextLabel" parent="UIPanel"]
+clip_contents = false
+layout_mode = 0
+offset_left = -8.0
+offset_top = 40.0
+offset_right = 236.0
+offset_bottom = 294.0
+theme_override_fonts/normal_font = SubResource("FontVariation_obyqk")
+theme_override_font_sizes/normal_font_size = 41
+bbcode_enabled = true
+text = "Speed: 
+
+Weight:  
+
+Coolness:   "
+scroll_active = false
+horizontal_alignment = 2
+
+[node name="SpeedBar" type="ProgressBar" parent="UIPanel/Stats"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 244.0
+offset_top = 7.0
+offset_right = 415.0
+offset_bottom = 34.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6gelk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8745o")
+max_value = 5.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="WeightBar" type="ProgressBar" parent="UIPanel/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 236.0
+offset_top = 91.0
+offset_right = 407.0
+offset_bottom = 118.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6gelk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8745o")
+max_value = 5.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="CoolBar" type="ProgressBar" parent="UIPanel/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 226.0
+offset_top = 178.0
+offset_right = 397.0
+offset_bottom = 205.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6gelk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8745o")
+max_value = 5.0
+step = 1.0
+value = 3.0
+show_percentage = false
+
+[node name="CarName" type="Label" parent="UIPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = -244.0
+offset_right = 430.5
+offset_bottom = -187.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "2026 lead monster"
+label_settings = SubResource("LabelSettings_6j3tn")
+
+[node name="NextButton" type="Button" parent="UIPanel"]
+layout_mode = 0
+offset_left = 896.0
+offset_top = 277.0
+offset_right = 1085.0
+offset_bottom = 354.0
+focus_mode = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.6052743, 0.6052743, 0.6052743, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("5_xf4j5")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_wj4ei")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xf4j5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ncmrg")
+text = "NEXT"
+
+[node name="Left" type="Button" parent="UIPanel"]
+layout_mode = 0
+offset_left = 703.0
+offset_top = 170.0
+offset_right = 788.0
+offset_bottom = 269.8969
+focus_mode = 3
+theme_override_colors/font_color = Color(1, 1, 1, 0.6901961)
+theme_override_colors/font_pressed_color = Color(0.43137255, 0.43137255, 0.43137255, 0.6901961)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.6901961)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource("FontVariation_xf4j5")
+theme_override_font_sizes/font_size = 49
+theme_override_styles/normal = SubResource("StyleBoxFlat_wvot5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_obyqk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6j3tn")
+text = "<"
+
+[node name="Right" type="Button" parent="UIPanel"]
+layout_mode = 0
+offset_left = 796.0
+offset_top = 170.0
+offset_right = 881.0
+offset_bottom = 269.8969
+focus_mode = 3
+theme_override_colors/font_color = Color(1, 1, 1, 0.6901961)
+theme_override_colors/font_pressed_color = Color(0.43137255, 0.43137255, 0.43137255, 0.6901961)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.6901961)
+theme_override_constants/outline_size = 18
+theme_override_fonts/font = SubResource("FontVariation_xf4j5")
+theme_override_font_sizes/font_size = 49
+theme_override_styles/normal = SubResource("StyleBoxFlat_wvot5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_obyqk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6j3tn")
+text = ">"
+
+[connection signal="pressed" from="UIPanel/NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="UIPanel/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="UIPanel/Right" to="." method="_on_right_pressed"]
