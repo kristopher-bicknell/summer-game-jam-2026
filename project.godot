@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Summer Game Jam 2026"
+config/name="Racer2K"
+config/version="0.9"
 run/main_scene="uid://bxgifpudsf67e"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
