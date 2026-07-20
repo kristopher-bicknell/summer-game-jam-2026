@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3geojose4h18"]
+
+[ext_resource type="Script" uid="uid://carlo1o6x4mc7" path="res://script/player_car.gd" id="1_kb8hb"]
+[ext_resource type="ArrayMesh" uid="uid://ce0f5nlipmdkt" path="res://assets/car_withwheels.obj" id="2_kb8hb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_in3s4"]
+size = Vector3(57, 11, 148)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kb8hb"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 165.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_in3s4"]
+shading_mode = 0
+
+[node name="PlayerCar" type="CharacterBody3D"]
+script = ExtResource("1_kb8hb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12194, 0)
+shape = SubResource("BoxShape3D_in3s4")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="SoftBody3D" type="SoftBody3D" parent="Node3D"]
+mesh = ExtResource("2_kb8hb")
+skeleton = NodePath("../..")
+parent_collision_ignore = NodePath("../..")
+simulation_precision = 8
+linear_stiffness = 0.1
+pressure_coefficient = 0.505
+damping_coefficient = 0.0
+pinned_points = [91, 112, 88, 110]
+attachments/0/point_index = 91
+attachments/0/spatial_attachment_path = NodePath("../..")
+attachments/0/offset = Vector3(14.22, -6.94904, 39.7095)
+attachments/1/point_index = 112
+attachments/1/spatial_attachment_path = NodePath("../..")
+attachments/1/offset = Vector3(-14.2209, -6.94904, 39.7095)
+attachments/2/point_index = 88
+attachments/2/spatial_attachment_path = NodePath("../..")
+attachments/2/offset = Vector3(14.22, -6.94904, -38.736)
+attachments/3/point_index = 110
+attachments/3/spatial_attachment_path = NodePath("../..")
+attachments/3/offset = Vector3(-14.2209, -6.94904, -38.736)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1.51863, 0)
+mesh = SubResource("CylinderMesh_kb8hb")
+surface_material_override/0 = SubResource("StandardMaterial3D_in3s4")
