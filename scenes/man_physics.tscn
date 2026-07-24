@@ -29,6 +29,6 @@ metadata/_custom_type_script = "uid://bvc0e8o5reuel"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.343628, 0)
 shape = SubResource("CylinderShape3D_e8mgr")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlacementGuide" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.344, 0)
 mesh = SubResource("CapsuleMesh_6fgls")

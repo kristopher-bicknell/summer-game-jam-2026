@@ -13,6 +13,11 @@ extends Node3D
 
 var lap = 0
 var current_checkpoint: int = 0
+@export var background_music: AudioStreamMP3
+signal win_condition
+
+func get_car_root():
+	return $Car
 
 func _ready():
 	$Terrain/CollisionShape3D.shape = load("res://assets/city1/terrain.obj").create_trimesh_shape()
@@ -49,4 +54,4 @@ func checkpoint_entered(body: Node3D, index: int):
 		current_checkpoint = index
 
 func check_win_condition(is_increment: bool = true):
-	print("you cannot win")
+	win_condition.emit()

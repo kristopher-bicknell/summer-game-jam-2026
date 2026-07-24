@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ddkwtah51na35"]
+[gd_scene load_steps=47 format=3 uid="uid://ddkwtah51na35"]
 
 [ext_resource type="Script" uid="uid://fm837n0m55lj" path="res://script/title_screen.gd" id="1_3yumr"]
 [ext_resource type="ArrayMesh" uid="uid://ds0fkia5t6otr" path="res://assets/titlescreen/logo.obj" id="1_dc4i4"]
@@ -7,9 +7,18 @@
 [ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="4_cs5ya"]
 [ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="6_3yumr"]
 [ext_resource type="Texture2D" uid="uid://cs72buvsbw8rp" path="res://assets/titlescreen/nyc.jpg" id="6_e54dn"]
+[ext_resource type="Shader" uid="uid://by8vkleykqr7g" path="res://assets/resource/outline.gdshader" id="6_mykxm"]
 [ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="8_cs5ya"]
+[ext_resource type="AudioStream" uid="uid://qy8e6yj7gt76" path="res://assets/resource/audio/glass_breaking.mp3" id="10_tklts"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mykxm"]
+render_priority = 0
+shader = ExtResource("6_mykxm")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.01999999955296
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tklts"]
+next_pass = SubResource("ShaderMaterial_mykxm")
 shading_mode = 2
 disable_ambient_light = true
 albedo_color = Color(1, 0.16470589, 0, 1)
@@ -107,7 +116,14 @@ load_path = "res://.godot/imported/car.png-d32f5b1402097a8b34a6ade6a9b7d527.s3tc
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_khjys"]
 load_path = "res://.godot/imported/car_clearcoat.png-9d5216a9164c09f0be6d551572d151cd.s3tc.ctex"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tklts"]
+render_priority = 0
+shader = ExtResource("6_mykxm")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.1999999955296
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_174rq"]
+next_pass = SubResource("ShaderMaterial_tklts")
 albedo_texture = SubResource("CompressedTexture2D_p07av")
 metallic = 1.0
 clearcoat_texture = SubResource("CompressedTexture2D_khjys")
@@ -246,6 +262,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(-1152, 0)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("GlassBreaking:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_w03br"]
 resource_name = "title_screen"
@@ -357,6 +385,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(469, 0), Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("GlassBreaking:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_cs5ya"]
@@ -858,6 +898,22 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 8
 theme_override_fonts/font = ExtResource("8_cs5ya")
 text = "sick"
+
+[node name="Label" type="Label" parent="SettingsScreen"]
+layout_mode = 0
+offset_left = 186.125
+offset_top = 225.0
+offset_right = 471.125
+offset_bottom = 248.0
+rotation = 0.1605703
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 32
+text = "these buttosn do fucking NOTHING!!!
+you can click them though"
+
+[node name="GlassBreaking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tklts")
 
 [connection signal="pressed" from="MainScreen/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainScreen/SettingsButton" to="." method="_on_settings_button_pressed"]

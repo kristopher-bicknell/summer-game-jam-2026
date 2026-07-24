@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://cfd06tbvmjnar" path="res://assets/resource/toon.gdshader" id="3_kset0"]
 [ext_resource type="Shader" uid="uid://by8vkleykqr7g" path="res://assets/resource/outline.gdshader" id="3_lcgeh"]
 [ext_resource type="Texture2D" uid="uid://cemt1pd2v4qhr" path="res://assets/headgear.png" id="4_311h6"]
+[ext_resource type="Material" uid="uid://bgo0n5vqwl1n4" path="res://assets/resource/small_outline.tres" id="5_kx0l6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k01w1"]
 render_priority = 0
@@ -31,15 +32,9 @@ shader_parameter/rim_width = 12.0
 
 [sub_resource type="TorusMesh" id="TorusMesh_lcgeh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6l1qn"]
-render_priority = 0
-shader = ExtResource("3_lcgeh")
-shader_parameter/color = Color(0, 0, 0, 1)
-shader_parameter/thickness = 0.1499999966472
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kx0l6"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_6l1qn")
+next_pass = ExtResource("5_kx0l6")
 shader = ExtResource("3_kset0")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture = ExtResource("4_311h6")

@@ -47,12 +47,15 @@ func set_displaydata():
 	%CoolBar.modulate =  color_gradient.colors.get(cool)
 
 func _on_right_pressed() -> void:
+	AudioManager.play_storedsfx(0)
 	rotation(true)
 
 func _on_left_pressed() -> void:
+	AudioManager.play_storedsfx(0)
 	rotation(false)
 
 func _on_next_button_pressed() -> void:
+	AudioManager.play_storedsfx(1)
 	$AnimationPlayer.speed_scale = 1.0
 	$AnimationPlayer.play("car"+str(current_car)+"_select")
 	await get_tree().create_timer(0.8).timeout

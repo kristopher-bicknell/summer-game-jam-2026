@@ -21,6 +21,7 @@ config/windows_native_icon="res://icon.ico"
 
 Global="*res://script/global.gd"
 SaveData="*res://script/save_data.gd"
+AudioManager="*res://script/audiomanager.gd"
 
 [editor]
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://dsuyfhpenijff"]
+[gd_scene load_steps=40 format=3 uid="uid://dsuyfhpenijff"]
 
 [ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="1_46og1"]
 [ext_resource type="Script" uid="uid://ctrkj7rvbdtpf" path="res://script/car_select.gd" id="1_q6d0u"]
 [ext_resource type="Material" uid="uid://dcgasbekaxcic" path="res://assets/car0texture.tres" id="2_q6d0u"]
+[ext_resource type="Shader" uid="uid://by8vkleykqr7g" path="res://assets/resource/outline.gdshader" id="2_wol1q"]
+[ext_resource type="Shader" uid="uid://cfd06tbvmjnar" path="res://assets/resource/toon.gdshader" id="3_ncmrg"]
 [ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="4_wj4ei"]
 [ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="5_xf4j5"]
 
@@ -14,13 +16,31 @@ material = SubResource("StandardMaterial3D_pytwq")
 flip_faces = true
 size = Vector3(71.115, 30, 50)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wol1q"]
-albedo_color = Color(0.3665946, 0.3665946, 0.36659458, 1)
-metallic = 0.56
-roughness = 0.39
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wvot5"]
+render_priority = 0
+shader = ExtResource("2_wol1q")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.249999994412
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obyqk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wvot5")
+shader = ExtResource("3_ncmrg")
+shader_parameter/albedo = Color(0.446777, 0.44677705, 0.44677705, 1)
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/shadow_color = Color(46, 46, 46, 255)
+shader_parameter/rim_color = Color(0, 0, 0, 1)
+shader_parameter/rim_width = 12.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xf4j5"]
-material = SubResource("StandardMaterial3D_wol1q")
+material = SubResource("ShaderMaterial_obyqk")
 top_radius = 6.561
 bottom_radius = 8.81
 
@@ -357,31 +377,35 @@ mesh = SubResource("CylinderMesh_xf4j5")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(-3.5174875e-08, 0.5936718, 0.80470735, 2.5950216e-08, 0.80470735, -0.5936718, -1, 0, -4.3711392e-08, 6.7922325, -4.7367444, 0)
+light_energy = 5.0
 light_specular = 16.0
 spot_range = 8.665398
 spot_angle = 28.125002
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(-4.371139e-08, -0.5934189, -0.80489385, 0, 0.80489385, -0.5934189, 1, -2.5939165e-08, -3.5183024e-08, -6.792, -4.737, 0)
+light_energy = 5.0
 light_specular = 16.0
 spot_range = 8.665398
 spot_angle = 28.125002
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(-1, -2.595022e-08, -7.888626e-08, 2.5950214e-08, 0.80470735, -0.5936718, 7.888626e-08, -0.5936718, -0.80470735, 0, -4.737, -7.882)
+light_energy = 5.0
 light_specular = 16.0
 spot_range = 8.665398
 spot_angle = 28.125002
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 0.8048938, -0.5934189, 0, 0.5934189, 0.8048938, 0, -4.737, 7.882)
+light_energy = 5.0
 light_specular = 16.0
 spot_range = 8.665398
 spot_angle = 28.125002
 
 [node name="SpotLight3D5" type="SpotLight3D" parent="Lights"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.114127, 0)
-light_energy = 5.0
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 8.148405, 0)
+light_energy = 100.0
 spot_range = 19.520063
 spot_angle = 47.243492
 
@@ -389,6 +413,9 @@ spot_angle = 47.243492
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.8206778, 0)
 light_energy = 10.0
 omni_range = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.42315072, -0.8241589, -0.37643808, 0.6159104, -0.043071248, 0.78663796, -0.6645283, -0.5647184, 0.48938248, 0, 2.821626, 0)
 
 [node name="CarDisplayPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.477049)
@@ -582,6 +609,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_wvot5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_obyqk")
 theme_override_styles/hover = SubResource("StyleBoxFlat_6j3tn")
 text = ">"
+
+[node name="Plink" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="UIPanel/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="UIPanel/Left" to="." method="_on_left_pressed"]

@@ -29,4 +29,5 @@ func set_skin(gender: int, appearance: int) -> ShaderMaterial:
 	var material = ShaderMaterial.new()
 	material.shader = Global.skin_shader
 	material.set_shader_parameter("albedo_texture", load(textures[gender][appearance]))
+	material.next_pass = load("res://assets/resource/small_outline.tres")
 	return material

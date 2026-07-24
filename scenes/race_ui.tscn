@@ -1,23 +1,133 @@
-[gd_scene load_steps=7 format=3 uid="uid://chob6a32ow0g8"]
+[gd_scene load_steps=11 format=3 uid="uid://chob6a32ow0g8"]
 
 [ext_resource type="Script" uid="uid://b8fbg8do8enn" path="res://script/race_ui.gd" id="1_l2k7s"]
 [ext_resource type="FontFile" uid="uid://dha3n3ky477ut" path="res://assets/resource/7segment.ttf" id="2_u4gxi"]
 [ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="3_u4gxi"]
+[ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="4_vcm3a"]
 
 [sub_resource type="FontVariation" id="FontVariation_vcm3a"]
 base_font = ExtResource("2_u4gxi")
 variation_transform = Transform2D(1.315, 0, 0, 1.2, 0, 0)
 spacing_glyph = 10
 
-[sub_resource type="LabelSettings" id="LabelSettings_x6lvy"]
-font = SubResource("FontVariation_vcm3a")
-font_size = 56
-font_color = Color(0, 0, 0, 1)
-outline_size = 8
-
 [sub_resource type="LabelSettings" id="LabelSettings_vcm3a"]
 font = ExtResource("3_u4gxi")
 font_size = 24
+
+[sub_resource type="Animation" id="Animation_vcm3a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelClearText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(75, -150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stopwatch:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(397.5, 12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spedometer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(748, 515)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(231.5, 482.75)]
+}
+
+[sub_resource type="Animation" id="Animation_u4gxi"]
+resource_name = "end_race"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelClearText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(75, -150), Vector2(75, 76)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stopwatch:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(397.5, 12), Vector2(397.5, 147)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Spedometer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(748, 515), Vector2(1202, 515)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(231.5, 694.085), Vector2(231.5, 482.75)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6lvy"]
+_data = {
+&"RESET": SubResource("Animation_vcm3a"),
+&"end_race": SubResource("Animation_u4gxi")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_evjl4"]
+font = ExtResource("3_u4gxi")
+font_size = 55
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
 
 [node name="RaceUI" type="Control"]
 layout_mode = 3
@@ -29,7 +139,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_l2k7s")
 
-[node name="Stopwatch" type="Label" parent="."]
+[node name="Stopwatch" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
@@ -37,11 +147,16 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -178.5
 offset_top = 12.0
-offset_right = 178.5
-offset_bottom = 117.0
+offset_right = 193.5
+offset_bottom = 137.00009
 grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_vcm3a")
+theme_override_font_sizes/normal_font_size = 56
+bbcode_enabled = true
 text = "00:00.0"
-label_settings = SubResource("LabelSettings_x6lvy")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -54,18 +169,89 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 748.0
 offset_top = 515.0
-offset_right = 1114.0
+offset_right = 1113.999
 offset_bottom = 637.0
 text = "402.0 MPH"
 label_settings = SubResource("LabelSettings_vcm3a")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 961.0
-offset_top = 519.0
-offset_right = 1057.0
-offset_bottom = 542.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_x6lvy")
+}
+
+[node name="LevelClearText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -501.0
+offset_top = -150.0
+offset_right = 501.0
+offset_bottom = -97.0
+grow_horizontal = 2
+text = "finished!"
+label_settings = SubResource("LabelSettings_evjl4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -344.5
+offset_top = 158.75
+offset_right = 344.5
+offset_bottom = 268.75012
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="TrackSelectButton" type="Button" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_vcm3a")
+theme_override_font_sizes/font_size = 24
+text = "Track Select"
+
+[node name="TitleScreenButton" type="Button" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_vcm3a")
+theme_override_font_sizes/font_size = 24
+text = "Title Screen"
+
+[node name="VehicleSelectButton" type="Button" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_vcm3a")
+theme_override_font_sizes/font_size = 24
+text = "Vehicle Select"
+
+[node name="ReplayTrackButton" type="Button" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_vcm3a")
+theme_override_font_sizes/font_size = 24
+text = "Replay track"
 
 [connection signal="timeout" from="MSecondsTimer" to="." method="_on_m_seconds_timer_timeout"]

@@ -1,55 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxgifpudsf67e"]
+[gd_scene load_steps=7 format=3 uid="uid://bxgifpudsf67e"]
 
 [ext_resource type="Script" uid="uid://dtow28b3we04p" path="res://script/main.gd" id="1_tefeu"]
-[ext_resource type="Script" uid="uid://q0xut2hwyv5x" path="res://script/car_controllertest.gd" id="4_tbgi4"]
 [ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="5_tbgi4"]
-[ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="5_tefeu"]
-[ext_resource type="Material" uid="uid://dcgasbekaxcic" path="res://assets/car0texture.tres" id="7_tipki"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o6xl0"]
-bounce = 0.5
-
-[sub_resource type="SphereMesh" id="SphereMesh_a8y0u"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jkv2x"]
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 1
-shading_mode = 0
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_tbgi4"]
-radius = 7.36595
-
-[sub_resource type="BoxMesh" id="BoxMesh_choun"]
-size = Vector3(0.4, 16, 0.4)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ya4ey"]
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eb6dy"]
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 1
-shading_mode = 0
-albedo_color = Color(0, 1, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trceg"]
-transparency = 1
-cull_mode = 2
-depth_draw_mode = 1
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_tefeu"]
-radius = 4.7857857
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o6xl0"]
-radius = 4.6679688
-height = 14.30957
 
 [sub_resource type="LabelSettings" id="LabelSettings_tefeu"]
 font = ExtResource("5_tbgi4")
@@ -262,66 +214,8 @@ _data = {
 &"countdown": SubResource("Animation_o6xl0")
 }
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("car_root")]
+[node name="Node3D" type="Node3D"]
 script = ExtResource("1_tefeu")
-car_root = NodePath("Car")
-
-[node name="Car" type="RigidBody3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-mass = 40.0
-physics_material_override = SubResource("PhysicsMaterial_o6xl0")
-script = ExtResource("4_tbgi4")
-
-[node name="SoftBody3D" type="SoftBody3D" parent="Car"]
-mesh = ExtResource("5_tefeu")
-surface_material_override/0 = ExtResource("7_tipki")
-parent_collision_ignore = NodePath("..")
-simulation_precision = 8
-linear_stiffness = 0.37
-pressure_coefficient = 0.97
-damping_coefficient = 0.0
-pinned_points = [246, 388, 452]
-attachments/0/point_index = 246
-attachments/0/spatial_attachment_path = NodePath("..")
-attachments/0/offset = Vector3(0, -4.317438, -0.546915)
-attachments/1/point_index = 388
-attachments/1/spatial_attachment_path = NodePath("..")
-attachments/1/offset = Vector3(0, 1.291173, 1.81234)
-attachments/2/point_index = 452
-attachments/2/spatial_attachment_path = NodePath("..")
-attachments/2/offset = Vector3(0, 0.218728, -7.075519)
-
-[node name="Root" type="MeshInstance3D" parent="Car"]
-mesh = SubResource("SphereMesh_a8y0u")
-surface_material_override/0 = SubResource("StandardMaterial3D_jkv2x")
-
-[node name="Area3D" type="Area3D" parent="Car"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Car/Area3D"]
-shape = SubResource("SphereShape3D_tbgi4")
-
-[node name="Z" type="MeshInstance3D" parent="Car"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 8)
-mesh = SubResource("BoxMesh_choun")
-surface_material_override/0 = SubResource("StandardMaterial3D_ya4ey")
-
-[node name="Y" type="MeshInstance3D" parent="Car"]
-transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 8, 0)
-mesh = SubResource("BoxMesh_choun")
-surface_material_override/0 = SubResource("StandardMaterial3D_eb6dy")
-
-[node name="X" type="MeshInstance3D" parent="Car"]
-transform = Transform3D(-4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 3.821371e-15, 0, 8.742278e-08, -1, 8, 0, 0)
-mesh = SubResource("BoxMesh_choun")
-surface_material_override/0 = SubResource("StandardMaterial3D_trceg")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Car"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35649073, 0)
-shape = SubResource("SphereShape3D_tefeu")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Car"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.4457326, 0.5883789)
-shape = SubResource("CapsuleShape3D_o6xl0")
 
 [node name="3Count" type="Label" parent="."]
 visible = false
@@ -393,5 +287,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_85g3d")
 }
 
-[connection signal="body_entered" from="Car/Area3D" to="Car" method="_on_body_entered"]
-[connection signal="body_exited" from="Car/Area3D" to="Car" method="_on_body_exited"]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+
+[node name="UI_SFX" type="AudioStreamPlayer" parent="."]

@@ -1,9 +1,13 @@
-[gd_scene load_steps=116 format=3 uid="uid://ciyra7vx21b2w"]
+[gd_scene load_steps=136 format=3 uid="uid://ciyra7vx21b2w"]
 
 [ext_resource type="Script" uid="uid://c272yehiftldb" path="res://script/city.gd" id="1_0prrj"]
+[ext_resource type="AudioStream" uid="uid://b20xnf7ud3rm2" path="res://assets/resource/audio/copyrighted_mario_kart_64_music.mp3" id="2_8qblh"]
 [ext_resource type="ArrayMesh" uid="uid://blqa8v8gkpgyw" path="res://assets/city1/terrain.obj" id="2_568gb"]
+[ext_resource type="Script" uid="uid://q0xut2hwyv5x" path="res://script/car_controllertest.gd" id="2_ejh1d"]
+[ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="3_8qblh"]
 [ext_resource type="ArrayMesh" uid="uid://cygc565y516ph" path="res://assets/city1/building2.obj" id="4_7cit5"]
 [ext_resource type="PackedScene" uid="uid://cqgo0rwa4ybkx" path="res://scenes/man_physics.tscn" id="4_568gb"]
+[ext_resource type="Material" uid="uid://dcgasbekaxcic" path="res://assets/car0texture.tres" id="4_nogyb"]
 [ext_resource type="ArrayMesh" uid="uid://mdfex1sce051" path="res://assets/city1/stands.obj" id="5_7synt"]
 [ext_resource type="Texture2D" uid="uid://d10mbmcfi5e3w" path="res://assets/city1/building2.png" id="5_k07h7"]
 [ext_resource type="ArrayMesh" uid="uid://c4mcmxqsmhvll" path="res://assets/city1/arrowsign.obj" id="6_rua05"]
@@ -39,7 +43,53 @@
 [ext_resource type="ArrayMesh" uid="uid://b37pg3fga1qw0" path="res://assets/tree2.obj" id="32_rua05"]
 [ext_resource type="ArrayMesh" uid="uid://chjmcb2b011y" path="res://assets/city1/terrain_park_treemask.obj" id="33_cjmcu"]
 [ext_resource type="Texture2D" uid="uid://d00uatdh0gnoy" path="res://assets/city1/courthouse.png" id="33_u0cv2"]
+[ext_resource type="ArrayMesh" uid="uid://d1jmgk4eqfkrq" path="res://assets/city1/lantern.obj" id="40_gnpwu"]
 [ext_resource type="ArrayMesh" uid="uid://dxav2jx1yqg7y" path="res://assets/city1/pointyrock.obj" id="40_ojxgv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0cwso"]
+bounce = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_c6l5e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wohud"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xdf0b"]
+radius = 7.36595
+
+[sub_resource type="BoxMesh" id="BoxMesh_pj2xe"]
+size = Vector3(0.4, 16, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysecs"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieuxh"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6twck"]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n136o"]
+radius = 4.7857857
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k0f0x"]
+radius = 4.6679688
+height = 14.30957
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fp0ag"]
 render_priority = 0
@@ -400,7 +450,7 @@ shader_parameter/rim_width = 12.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_o1iyx"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ejh1d"]
-height = 19.074951
+height = 18.364136
 radius = 4.3500977
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8qblh"]
@@ -426,6 +476,26 @@ shader_parameter/specular_shininess = 16.0
 shader_parameter/shadow_color = Color(46, 46, 46, 255)
 shader_parameter/rim_color = Color(0, 0, 0, 1)
 shader_parameter/rim_width = 12.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cghw2"]
+height = 52.790497
+radius = 6.0146484
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gnpwu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6l5e"]
+transparency = 1
+albedo_color = Color(1, 1, 0, 0.5176471)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lebc"]
+albedo_color = Color(0.11585339, 0.09812913, 0.043282807, 1)
+metallic = 0.85
+roughness = 0.27
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wohud"]
+size = Vector3(5.7128906, 7.881653, 5.794922)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cjmcu"]
 render_priority = 0
@@ -462,6 +532,68 @@ size = Vector2(430.905, 155.41)
 
 [node name="City" type="Node3D"]
 script = ExtResource("1_0prrj")
+background_music = ExtResource("2_8qblh")
+
+[node name="Car" type="RigidBody3D" parent="."]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 6.0731316, 0)
+mass = 40.0
+physics_material_override = SubResource("PhysicsMaterial_0cwso")
+script = ExtResource("2_ejh1d")
+
+[node name="SoftBody3D" type="SoftBody3D" parent="Car"]
+mesh = ExtResource("3_8qblh")
+surface_material_override/0 = ExtResource("4_nogyb")
+parent_collision_ignore = NodePath("..")
+simulation_precision = 8
+linear_stiffness = 0.37
+pressure_coefficient = 0.97
+damping_coefficient = 0.0
+pinned_points = [246, 388, 452]
+attachments/0/point_index = 246
+attachments/0/spatial_attachment_path = NodePath("..")
+attachments/0/offset = Vector3(0, -4.317438, -0.546915)
+attachments/1/point_index = 388
+attachments/1/spatial_attachment_path = NodePath("..")
+attachments/1/offset = Vector3(0, 1.291173, 1.81234)
+attachments/2/point_index = 452
+attachments/2/spatial_attachment_path = NodePath("..")
+attachments/2/offset = Vector3(0, 0.218728, -7.075519)
+
+[node name="Root" type="MeshInstance3D" parent="Car"]
+visible = false
+mesh = SubResource("SphereMesh_c6l5e")
+surface_material_override/0 = SubResource("StandardMaterial3D_wohud")
+
+[node name="Area3D" type="Area3D" parent="Car"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car/Area3D"]
+shape = SubResource("SphereShape3D_xdf0b")
+
+[node name="Z" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 8)
+visible = false
+mesh = SubResource("BoxMesh_pj2xe")
+surface_material_override/0 = SubResource("StandardMaterial3D_ysecs")
+
+[node name="Y" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 8, 0)
+visible = false
+mesh = SubResource("BoxMesh_pj2xe")
+surface_material_override/0 = SubResource("StandardMaterial3D_ieuxh")
+
+[node name="X" type="MeshInstance3D" parent="Car"]
+transform = Transform3D(-4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 3.821371e-15, 0, 8.742278e-08, -1, 8, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_pj2xe")
+surface_material_override/0 = SubResource("StandardMaterial3D_6twck")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35649073, 0)
+shape = SubResource("SphereShape3D_n136o")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -1.4457326, 0.5883789)
+shape = SubResource("CapsuleShape3D_k0f0x")
 
 [node name="BuildingsNShit" type="Node3D" parent="."]
 
@@ -1086,9 +1218,10 @@ font_size = 4000
 
 [node name="Label3D2" type="Label3D" parent="Underground"]
 transform = Transform3D(0.9924394, 0, 0.122735426, 0, 1, 0, -0.122735426, 0, 0.9924394, -408.36703, 113.11801, 59.553497)
-text = "maybe a sewer system?
-but i dont want to redo
-the terrain again..."
+text = "i like the cave theming
+but i dont want to just do
+300 pointy rock physics
+objects"
 font_size = 4000
 
 [node name="Label3D3" type="Label3D" parent="Underground"]
@@ -1099,10 +1232,11 @@ thanks"
 font_size = 4000
 
 [node name="Speleothem" type="RigidBody3D" parent="Underground"]
-transform = Transform3D(-0.9786455, 0.2055551, -1.4901161e-08, -0.20178325, -0.9606879, -0.19068906, -0.039197125, -0.186617, 0.9816505, -290.95215, 86.57193, -375.7353)
+transform = Transform3D(-0.9786455, 0.2055551, -1.4901161e-08, -0.20178325, -0.9606879, -0.19068906, -0.039197125, -0.186617, 0.9816505, -290.85544, 86.11999, -375.8231)
 physics_material_override = SubResource("PhysicsMaterial_o1iyx")
 script = ExtResource("11_bwg8n")
 is_still = true
+is_person = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Speleothem"]
 transform = Transform3D(1.0000004, 5.3551048e-08, 7.4505806e-08, -1.1646189e-06, 1.0000008, -4.4703484e-08, 1.5646219e-07, 4.172325e-07, 1, 3.0517578e-05, 8.537262, -3.8146973e-06)
@@ -1111,6 +1245,267 @@ shape = SubResource("CylinderShape3D_ejh1d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Speleothem"]
 mesh = ExtResource("40_ojxgv")
 surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="Speleothem2" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(-0.97864544, 0.20320244, 0.03101085, -0.20178325, -0.9209242, -0.3334397, -0.039197125, -0.33257678, 0.9422612, -273.95792, 83.97522, -353.3623)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Speleothem2"]
+transform = Transform3D(1.0000004, 5.3551048e-08, 7.4505806e-08, -1.1646189e-06, 1.0000008, -4.4703484e-08, 1.5646219e-07, 4.172325e-07, 1, 3.0517578e-05, 8.537262, -3.8146973e-06)
+shape = SubResource("CylinderShape3D_ejh1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Speleothem2"]
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="Speleothem3" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.96908456, 0.2467284, -7.450581e-09, 0.218803, -0.8594009, 0.46212018, 0.11401817, -0.4478336, -0.8868173, 49.801994, 146.06186, 544.9657)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Speleothem3"]
+transform = Transform3D(1.0000004, 5.3551048e-08, 7.4505806e-08, -1.1646189e-06, 1.0000008, -4.4703484e-08, 1.5646219e-07, 4.172325e-07, 1, 3.0517578e-05, 8.537262, -3.8146973e-06)
+shape = SubResource("CylinderShape3D_ejh1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Speleothem3"]
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="Speleothem5" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.96908456, 0.24226572, 0.04671441, 0.218803, -0.9313522, 0.29104656, 0.11401817, -0.27182755, -0.9555677, -184.51999, 91.04654, 516.29724)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Speleothem5"]
+transform = Transform3D(1.0000004, 5.3551048e-08, 7.4505806e-08, -1.1646189e-06, 1.0000008, -4.4703484e-08, 1.5646219e-07, 4.172325e-07, 1, 3.0517578e-05, 8.537262, -3.8146973e-06)
+shape = SubResource("CylinderShape3D_ejh1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Speleothem5"]
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="Speleothem4" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(-0.6527437, 0.74757326, 0.12271729, -0.48894364, -0.539451, 0.68551207, 0.57867044, 0.3874619, 0.7176445, 106.5336, 169.06493, 586.09607)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Speleothem4"]
+transform = Transform3D(1.000003, 9.685755e-07, -1.0728836e-06, -1.1920929e-07, 1.0000029, -2.9802322e-07, 8.940697e-08, -1.4901161e-07, 1.0000035, -6.1035156e-05, 8.181885, 6.1035156e-05)
+shape = SubResource("CylinderShape3D_ejh1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Speleothem4"]
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="BigSpeleothem" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.9988654, -0.03613814, 0.031010855, 0.04442285, 0.9417241, -0.33343974, -0.017153773, 0.33443898, 0.94226116, -229.77351, 195.89583, -499.58212)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/BigSpeleothem"]
+transform = Transform3D(1.0000004, 5.4948032e-08, 4.0978193e-08, -1.125969e-06, 1.0000008, 0, 1.5646219e-07, 4.172325e-07, 1, 0, 28.521194, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_cghw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/BigSpeleothem"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="BigSpeleothem3" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.36074567, 0, -0.9326641, 0, 0.9999998, 0, 0.9326641, 0, 0.36074567, 80.68712, 178.99844, 568.2838)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/BigSpeleothem3"]
+transform = Transform3D(1.0000005, 5.4948018e-08, 2.9802322e-08, -1.125969e-06, 1.0000008, 0, 2.9802322e-07, 4.172325e-07, 1, 0, 25.39502, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_cghw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/BigSpeleothem3"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="BigSpeleothem4" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(-0.8079178, 0, -0.589295, 0, 0.9999998, 0, 0.589295, 0, -0.8079178, 88.13855, 183.99982, 615.2169)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/BigSpeleothem4"]
+transform = Transform3D(1.0000004, 5.4948032e-08, 4.0978193e-08, -1.125969e-06, 1.0000008, 0, 1.5646219e-07, 4.172325e-07, 1, 0, 28.521194, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_cghw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/BigSpeleothem4"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="BigSpeleothem6" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(-0.8079178, 0, -0.589295, 0, 0.9999998, 0, 0.589295, 0, -0.8079178, -246.14973, 160.65286, 531.11804)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/BigSpeleothem6"]
+transform = Transform3D(1.0000004, 5.4948032e-08, 4.0978193e-08, -1.125969e-06, 1.0000008, 0, 1.5646219e-07, 4.172325e-07, 1, 0, 28.521194, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_cghw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/BigSpeleothem6"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="BigSpeleothem7" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(-0.8079178, 0, -0.589295, 0, 0.9999998, 0, 0.589295, 0, -0.8079178, -275.4179, 162.33603, 552.46625)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/BigSpeleothem7"]
+transform = Transform3D(1.0000004, 5.4948032e-08, 4.0978193e-08, -1.125969e-06, 1.0000008, 0, 1.5646219e-07, 4.172325e-07, 1, 0, 28.521194, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_cghw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/BigSpeleothem7"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="BigSpeleothem5" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(-0.64745504, 0, 0.7621035, 0, 0.9999998, 0, -0.7621035, 0, -0.64745504, 109.10655, 183.99982, 591.50305)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/BigSpeleothem5"]
+transform = Transform3D(1.0000004, 5.4948032e-08, 4.0978193e-08, -1.125969e-06, 1.0000008, 0, 1.5646219e-07, 4.172325e-07, 1, 0, 28.521194, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_cghw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/BigSpeleothem5"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="BigSpeleothem2" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.9912999, -0.13094833, 0.013294682, 0.12934709, 0.98788416, 0.085754514, -0.024363026, -0.08328883, 0.99622756, -135.658, 211.317, -497.22244)
+physics_material_override = SubResource("PhysicsMaterial_o1iyx")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/BigSpeleothem2"]
+transform = Transform3D(1.0000004, 5.4948032e-08, 4.0978193e-08, -1.125969e-06, 1.0000008, 0, 1.5646219e-07, 4.172325e-07, 1, 0, 28.521194, -1.5258789e-05)
+shape = SubResource("CylinderShape3D_cghw2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/BigSpeleothem2"]
+transform = Transform3D(2, 0, 0, 0, 3, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("40_ojxgv")
+surface_material_override/0 = SubResource("ShaderMaterial_nogyb")
+
+[node name="Lantern" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.9993418, -0.036277436, 0, 0.036277436, 0.9993418, 0, 0, 0, 1, -237.8885, 52.768917, -93.293335)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_gnpwu")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Lantern"]
+mesh = ExtResource("40_gnpwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_c6l5e")
+surface_material_override/1 = SubResource("StandardMaterial3D_4lebc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Lantern"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.048065, 0)
+shape = SubResource("BoxShape3D_wohud")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Underground/Lantern"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0715637, 0)
+light_color = Color(1, 1, 0.6862745, 1)
+light_energy = 100.0
+omni_range = 12.266091
+
+[node name="Lantern3" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.9993418, -0.036277436, 0, 0.036277436, 0.9993418, 0, 0, 0, 1, -35.759842, 150.28967, -523.8118)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_gnpwu")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Lantern3"]
+mesh = ExtResource("40_gnpwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_c6l5e")
+surface_material_override/1 = SubResource("StandardMaterial3D_4lebc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Lantern3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.048065, 0)
+shape = SubResource("BoxShape3D_wohud")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Underground/Lantern3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0715637, 0)
+light_color = Color(1, 1, 0.6862745, 1)
+light_energy = 100.0
+omni_range = 12.266091
+
+[node name="Lantern2" type="RigidBody3D" parent="Underground"]
+transform = Transform3D(0.9036663, -0.036277436, -0.4266981, 0.032804288, 0.9993417, -0.015489708, 0.42697915, 0, 0.90426147, -238.49736, 69.54122, 557.772)
+mass = 0.2
+physics_material_override = SubResource("PhysicsMaterial_gnpwu")
+script = ExtResource("11_bwg8n")
+is_still = true
+is_person = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Underground/Lantern2"]
+mesh = ExtResource("40_gnpwu")
+surface_material_override/0 = SubResource("StandardMaterial3D_c6l5e")
+surface_material_override/1 = SubResource("StandardMaterial3D_4lebc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Underground/Lantern2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.048065, 0)
+shape = SubResource("BoxShape3D_wohud")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Underground/Lantern2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0715637, 0)
+light_color = Color(1, 1, 0.6862745, 1)
+light_energy = 100.0
+omni_range = 12.266091
+
+[node name="Person" parent="Underground" instance=ExtResource("4_568gb")]
+transform = Transform3D(0.9735271, 0, -0.22857176, 0, 1, 0, 0.22857176, 0, 0.9735271, -467.15625, 43.648666, 196.20517)
+type = 0
+head_type = 1
+play_animation = 7
+appearance = 2
+
+[node name="Person3" parent="Underground" instance=ExtResource("4_568gb")]
+transform = Transform3D(-0.29929054, 0, 0.954162, 0, 1, 0, -0.954162, 0, -0.29929054, -444.43875, 40.25435, 185.11726)
+type = 1
+head_type = 2
+play_animation = 9
+appearance = 1
+
+[node name="Person2" parent="Underground" instance=ExtResource("4_568gb")]
+transform = Transform3D(-0.9735271, 0, 0.22857185, 0, 1, 0, -0.22857185, 0, -0.9735271, -470.39322, 44.458633, 209.992)
+type = 0
+play_animation = 7
+appearance = 3
 
 [node name="Trees" type="Node3D" parent="."]
 
@@ -1131,3 +1526,6 @@ mesh = SubResource("PlaneMesh_j3jin")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = ExtResource("33_cjmcu")
+
+[connection signal="body_entered" from="Car/Area3D" to="Car" method="_on_body_entered"]
+[connection signal="body_exited" from="Car/Area3D" to="Car" method="_on_body_exited"]

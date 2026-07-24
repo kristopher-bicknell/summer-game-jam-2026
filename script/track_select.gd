@@ -35,4 +35,5 @@ func _on_big_city_button_pressed() -> void:
 
 func _on_start_button_pressed() -> void:
 	if curr_track == -1: return
+	AudioManager.play_storedsfx(1)
 	start_game.emit(curr_track)

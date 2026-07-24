@@ -5,7 +5,11 @@ extends RigidBody3D
 var _camera: Camera3D
 
 var _is_colliding := false
+var frozen: bool = false
+var saved_pos: Vector3
+var saved_rot: Vector3
 signal hit_a_civillian
+var is_control: bool = true
 
 const TARGET_SPEED = 500
 
@@ -17,7 +21,12 @@ func set_camera():
 		_camera = _camera_pivot.get_camera()
 
 func _physics_process(delta: float) -> void:
+	if frozen:
+		global_position = saved_pos
+		global_rotation = saved_rot
+		return
 	if !_camera or !_camera_pivot: return
+	if !is_control: return
 	_camera_pivot.global_position = global_position + center_of_mass
 		#player movement
 	var raw_input := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -51,3 +60,9 @@ func _on_body_entered(body: Node) -> void:
 func _on_body_exited(body: Node) -> void:
 	if body is StaticBody3D:
 		_is_colliding = false
+
+func set_frozen(is_frozen: bool):
+	frozen = is_frozen
+	if frozen:
+		saved_pos = global_position
+		saved_rot = global_rotation

@@ -12,6 +12,7 @@ var type_scenes = ["res://scenes/man.tscn", "res://scenes/woman.tscn", "res://sc
 @export_enum("business", "casual", "workout", "pajamas") var appearance
 
 func _ready():
+	$PlacementGuide.queue_free()
 	base_person = load(type_scenes[type]).instantiate() as Person
 	add_child(base_person)
 	base_person.setup(type, play_animation, appearance, head_type)

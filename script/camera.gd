@@ -9,6 +9,9 @@ var camera_input_direction := Vector2.ZERO
 @onready var ball = get_parent()
 @onready var offset = position
 
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("middle_click"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -32,3 +35,6 @@ func _physics_process(delta):
 
 func get_camera() -> Camera3D:
 	return $SpringArm3D/Camera3D
+
+func _exit_tree():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
