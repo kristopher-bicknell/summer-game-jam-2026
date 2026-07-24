@@ -3,7 +3,7 @@ extends Node3D
 
 @onready var anim_player = $AnimationPlayer as AnimationPlayer
 
-var anims = ["walk", "run", "exercise", "ballet", "sit", "yoga", "idle", "fight1", "fight2", "wave"]
+var anims = ["walk", "run", "exercise", "ballet", "sit", "yoga", "idle", "fight", "fight2", "wave"]
 
 var textures = {
 	0: ["res://assets/man/man_business1.png", "res://assets/man/man_casual1.png", "res://assets/man/man_workout1.png", "res://assets/man/man_pajamas1.png"],

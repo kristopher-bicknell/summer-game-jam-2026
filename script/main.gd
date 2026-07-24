@@ -16,13 +16,15 @@ func _ready():
 	#car_root.set_frozen(true)
 	AudioManager.BGMplayer = $BGM
 	AudioManager.UISFX = $UI_SFX
+	call_title_screen()
+	#TODO: does the save test actually do anything
+	save_test()
+
+func call_title_screen():
+	clear_track()
 	title_screen = load("res://scenes/title_screen.tscn").instantiate()
 	title_screen.start_game.connect(start_game)
 	add_child(title_screen)
-	#car stays in the main scene no matter what because my life sucks ass
-	#(making it its own instantiated scene broke the collisions for...some reason)
-	
-	save_test()
 
 func hit_a_civillian():
 	screen_fx.call_effect()
@@ -30,29 +32,31 @@ func hit_a_civillian():
 
 func start_game():
 	clear_track()
-	title_screen.queue_free()
+	if is_instance_valid(title_screen):
+		title_screen.queue_free()
 	car_select = load("res://scenes/car_select.tscn").instantiate()
 	car_select.select_car.connect(select_car)
 	add_child(car_select)
 
 func select_car():
 	clear_track()
-	if !car_select.is_queued_for_deletion():
+	if is_instance_valid(car_select):
 		car_select.queue_free()
 	track_select = load("res://scenes/track_select.tscn").instantiate()
 	track_select.start_game.connect(chosen_track)
 	add_child(track_select)
 
 func clear_track():
-	if !track_select.is_queued_for_deletion():
-		track_select.queue_free()
+	if is_instance_valid(current_track):
+		current_track.queue_free()
 		race_ui.queue_free()
 		race_camera.queue_free()
 		screen_fx.queue_free()
 
 func chosen_track(track: int):
 	if track != 1: return
-	track_select.queue_free()
+	if is_instance_valid(track_select):
+		track_select.queue_free()
 	current_track = load("res://scenes/city1.tscn").instantiate()
 	add_child(current_track)
 	car_root = current_track.get_car_root()
@@ -73,13 +77,34 @@ func start_race():
 	race_ui = load("res://scenes/race_ui.tscn").instantiate()
 	current_track.win_condition.connect(race_ui.end_race)
 	current_track.win_condition.connect(end_of_race_adjustments)
+	current_track.you_died.connect(race_ui.bad_end_race)
+	current_track.you_died.connect(end_of_race_adjustments)
+	race_ui.return_to.connect(return_to)
+	race_ui.paused.connect(pause_handle)
 	add_child(race_ui)
 	car_root.set_frozen(false)
+	Global.is_racing = true
 	AudioManager.start_bgm(current_track.background_music)
+
+func return_to(screen: int):
+	clear_track()
+	match screen:
+		0:
+			call_title_screen()
+		1:
+			start_game()
+		2:
+			select_car()
+		3:
+			chosen_track(1)
 
 func end_of_race_adjustments():
 	car_root.apply_central_impulse(Vector3(0,100000,0))
 	car_root.is_control = false
+
+func pause_handle(is_paused: bool):
+	if is_instance_valid(car_root):
+		car_root.set_frozen(is_paused)
 
 func save_test():
 	SaveData.save_race_data(0, 1, 12345, "2024-07-20 05:11:13")

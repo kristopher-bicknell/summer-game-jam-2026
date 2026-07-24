@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6by8vwrmcidl"]
+
+[ext_resource type="Script" uid="uid://bfpa1g5nbx014" path="res://script/sploosh.gd" id="1_y8qpx"]
+
+[sub_resource type="Gradient" id="Gradient_5irvs"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y8qpx"]
+gradient = SubResource("Gradient_5irvs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6g72e"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 5.0
+emission_ring_inner_radius = 2.0
+emission_ring_cone_angle = 34.9
+direction = Vector3(0, 0, -1)
+initial_velocity_min = 0.19999999
+initial_velocity_max = 52.649998
+gravity = Vector3(0, -90, 0)
+color_ramp = SubResource("GradientTexture1D_y8qpx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8b8w"]
+transparency = 1
+albedo_color = Color(0.3254902, 0.6862745, 1, 0.5568628)
+roughness = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_r3hxj"]
+material = SubResource("StandardMaterial3D_m8b8w")
+
+[node name="Node3D" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_6g72e")
+draw_pass_1 = SubResource("SphereMesh_r3hxj")
+script = ExtResource("1_y8qpx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="." to="." method="_on_finished"]

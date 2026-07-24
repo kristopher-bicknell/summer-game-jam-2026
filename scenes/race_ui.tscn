@@ -1,9 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://chob6a32ow0g8"]
+[gd_scene load_steps=18 format=3 uid="uid://chob6a32ow0g8"]
 
 [ext_resource type="Script" uid="uid://b8fbg8do8enn" path="res://script/race_ui.gd" id="1_l2k7s"]
 [ext_resource type="FontFile" uid="uid://dha3n3ky477ut" path="res://assets/resource/7segment.ttf" id="2_u4gxi"]
 [ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="3_u4gxi"]
 [ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="4_vcm3a"]
+[ext_resource type="PackedScene" uid="uid://dh7l67kdl0b31" path="res://scenes/settings_menu.tscn" id="5_x6lvy"]
+
+[sub_resource type="SystemFont" id="SystemFont_x6lvy"]
+font_names = PackedStringArray("Times New Roman")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mnx3s"]
+font = SubResource("SystemFont_x6lvy")
+font_size = 128
+font_color = Color(0.70980394, 0, 0, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_vcm3a"]
 base_font = ExtResource("2_u4gxi")
@@ -13,6 +22,11 @@ spacing_glyph = 10
 [sub_resource type="LabelSettings" id="LabelSettings_vcm3a"]
 font = ExtResource("3_u4gxi")
 font_size = 24
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.8352941)
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="Animation" id="Animation_vcm3a"]
 length = 0.001
@@ -62,7 +76,55 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(231.5, 482.75)]
+"values": [Vector2(231.5, 694.085)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SettingsMenu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1155, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PauseWindow:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(92, 129)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ColorRect/Label:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_u4gxi"]
@@ -117,10 +179,119 @@ tracks/3/keys = {
 "values": [Vector2(231.5, 694.085), Vector2(231.5, 482.75)]
 }
 
+[sub_resource type="Animation" id="Animation_x6lvy"]
+resource_name = "to_settings"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseWindow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(92, 129), Vector2(1280, 129)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SettingsMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1155, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_evjl4"]
+resource_name = "to_pausescreen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SettingsMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1155, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PauseWindow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 129), Vector2(92, 129)]
+}
+
+[sub_resource type="Animation" id="Animation_w700h"]
+resource_name = "you_died"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(231.5, 694.085), Vector2(231.5, 482.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Spedometer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(748, 515), Vector2(1202, 515)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x6lvy"]
 _data = {
 &"RESET": SubResource("Animation_vcm3a"),
-&"end_race": SubResource("Animation_u4gxi")
+&"end_race": SubResource("Animation_u4gxi"),
+&"to_pausescreen": SubResource("Animation_evjl4"),
+&"to_settings": SubResource("Animation_x6lvy"),
+&"you_died": SubResource("Animation_w700h")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_evjl4"]
@@ -128,6 +299,12 @@ font = ExtResource("3_u4gxi")
 font_size = 55
 font_color = Color(0, 0, 0, 1)
 outline_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_x6lvy"]
+font = ExtResource("3_u4gxi")
+font_size = 36
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
 [node name="RaceUI" type="Control"]
 layout_mode = 3
@@ -139,6 +316,40 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_l2k7s")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -614.0
+offset_top = -350.0
+offset_right = 614.0
+offset_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.5
+offset_top = -71.5
+offset_right = 307.5
+offset_bottom = 71.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_mnx3s")
+
 [node name="Stopwatch" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -148,7 +359,7 @@ anchor_right = 0.5
 offset_left = -178.5
 offset_top = 12.0
 offset_right = 193.5
-offset_bottom = 137.00009
+offset_bottom = 137.00012
 grow_horizontal = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -169,8 +380,9 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 748.0
 offset_top = 515.0
-offset_right = 1113.999
+offset_right = 1113.9978
 offset_bottom = 637.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "402.0 MPH"
 label_settings = SubResource("LabelSettings_vcm3a")
 horizontal_alignment = 2
@@ -204,9 +416,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -344.5
-offset_top = 158.75
+offset_top = 370.08502
 offset_right = 344.5
-offset_bottom = 268.75012
+offset_bottom = 480.08527
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 15
@@ -254,4 +466,105 @@ theme_override_fonts/font = ExtResource("4_vcm3a")
 theme_override_font_sizes/font_size = 24
 text = "Replay track"
 
+[node name="PauseWindow" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -484.0
+offset_top = -195.0
+offset_right = 484.00146
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="PauseWindow"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.5
+offset_top = 30.0
+offset_right = 145.5
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 8
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_x6lvy")
+
+[node name="SettingsButton" type="Button" parent="PauseWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -103.0
+offset_right = 202.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_vcm3a")
+theme_override_font_sizes/font_size = 30
+text = "settings"
+
+[node name="ExitButton" type="Button" parent="PauseWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -34.0
+offset_right = 203.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_vcm3a")
+theme_override_font_sizes/font_size = 30
+text = "exit to
+track select"
+
+[node name="ResumeButton" type="Button" parent="PauseWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = 69.0
+offset_right = 289.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("4_vcm3a")
+theme_override_font_sizes/font_size = 48
+text = "resume"
+
+[node name="SettingsMenu" parent="." instance=ExtResource("5_x6lvy")]
+layout_mode = 1
+offset_left = -1155.0
+offset_right = -1155.0
+mouse_filter = 2
+
 [connection signal="timeout" from="MSecondsTimer" to="." method="_on_m_seconds_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/GridContainer/TrackSelectButton" to="." method="_on_track_select_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/TitleScreenButton" to="." method="_on_title_screen_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/VehicleSelectButton" to="." method="_on_vehicle_select_button_pressed"]
+[connection signal="pressed" from="MarginContainer/GridContainer/ReplayTrackButton" to="." method="_on_replay_track_button_pressed"]
+[connection signal="pressed" from="PauseWindow/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="PauseWindow/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PauseWindow/ResumeButton" to="." method="_on_resume_button_pressed"]

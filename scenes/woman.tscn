@@ -53,11 +53,32 @@ shader_parameter/rim_width = 12.0
 [node name="woman" instance=ExtResource("1_so33h")]
 script = ExtResource("2_lbwyf")
 
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/0/position = Vector3(0, 7.409474, -0.32994872)
+bones/2/rotation = Quaternion(-0.10272869, 2.5744195e-19, 5.6264333e-18, 0.9947094)
+bones/3/rotation = Quaternion(-0.07289672, -4.994796e-19, 1.6539097e-17, 0.99733955)
+bones/4/rotation = Quaternion(0.05495141, 1.1902918e-07, 6.550719e-09, 0.998489)
+bones/5/rotation = Quaternion(-0.046980996, -1.1907771e-07, -5.6005702e-09, 0.9988959)
+bones/7/rotation = Quaternion(0.3834211, -0.038271546, -0.17944002, 0.9051656)
+bones/8/rotation = Quaternion(0.4443759, -0.54056555, -0.2712809, 0.6608523)
+bones/9/rotation = Quaternion(-0.016304828, 0.15073553, -0.2489677, 0.95657104)
+bones/11/rotation = Quaternion(0.3834211, 0.038271546, 0.17944002, 0.9051656)
+bones/12/rotation = Quaternion(0.44437596, 0.5405656, 0.27128097, 0.66085213)
+bones/13/rotation = Quaternion(-0.016304838, -0.15073548, 0.2489677, 0.95657104)
+bones/16/rotation = Quaternion(0.94713175, 0.3123031, 0.034866787, 0.06475103)
+bones/17/rotation = Quaternion(0.30020824, 0.07356713, 0.8193949, 0.4827575)
+bones/18/rotation = Quaternion(-0.37168387, 0.018526683, -0.036806434, 0.9274444)
+bones/19/rotation = Quaternion(0.09121572, 0.96659106, -0.077616476, -0.22662108)
+bones/20/rotation = Quaternion(0.9865149, 0.0027330744, 0.0039308458, 0.16360174)
+bones/21/rotation = Quaternion(0.08589723, -0.0066329543, -0.0056928475, 0.9962657)
+bones/22/rotation = Quaternion(-0.088535264, -0.013302287, 0.015717572, 0.99586016)
+bones/23/rotation = Quaternion(0.0044662245, 0.9987689, -0.048986457, 0.006408831)
+
 [node name="skin" parent="metarig/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_311h6")
 
 [node name="Head" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="1"]
-transform = Transform3D(1, 0, -4.2632564e-14, -3.5527137e-15, 0.99992025, 0.012601621, 1.4210855e-14, -0.012601629, 0.99992037, -1.29553105e-14, 10.526447, -0.00021491945)
+transform = Transform3D(1, -3.5527137e-15, -4.2632564e-14, 3.5527137e-15, 0.97750306, 0.21091992, 2.842171e-14, -0.21091992, 0.9775032, -1.4132376e-14, 11.868216, -0.40384993)
 bone_name = "spine.006"
 bone_idx = 5
 

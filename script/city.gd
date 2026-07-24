@@ -15,11 +15,13 @@ var lap = 0
 var current_checkpoint: int = 0
 @export var background_music: AudioStreamMP3
 signal win_condition
+signal you_died
 
 func get_car_root():
 	return $Car
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$Terrain/CollisionShape3D.shape = load("res://assets/city1/terrain.obj").create_trimesh_shape()
 	for i in range(checkpoints.size()):
 		checkpoints[i].body_entered.connect(checkpoint_entered.bind(i))
@@ -55,3 +57,7 @@ func checkpoint_entered(body: Node3D, index: int):
 
 func check_win_condition(is_increment: bool = true):
 	win_condition.emit()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if !body is PlayerCar: return
+	you_died.emit()

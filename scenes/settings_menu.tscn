@@ -1,0 +1,312 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh7l67kdl0b31"]
+
+[ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="1_cr101"]
+[ext_resource type="Script" uid="uid://dltqnc6ng4xrr" path="res://script/settings_menu.gd" id="1_wswnh"]
+[ext_resource type="FontFile" uid="uid://i7u3gwye8b3g" path="res://assets/resource/Draco.otf" id="2_wswnh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_labj1"]
+font = ExtResource("1_cr101")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwwgp"]
+font = ExtResource("2_wswnh")
+font_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgjg7"]
+bg_color = Color(0.23753911, 0.23753914, 0.23753902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_48ojb"]
+font = ExtResource("1_cr101")
+font_size = 21
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wswnh")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -438.0
+offset_top = -245.0
+offset_right = 438.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VolumeSlider" type="HSlider" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -103.0
+offset_right = 279.0
+offset_bottom = -85.240265
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Label" type="Label" parent="Panel/VolumeSlider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_top = -37.0
+offset_right = 53.0
+offset_bottom = -14.0
+grow_horizontal = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_labj1")
+horizontal_alignment = 1
+
+[node name="SensitivitySlider" type="HSlider" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = -7.0
+offset_right = 279.0
+offset_bottom = 10.759735
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+value = 0.25
+
+[node name="Label" type="Label" parent="Panel/SensitivitySlider"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -127.0
+offset_top = -37.0
+offset_right = 127.0
+offset_bottom = -14.0
+grow_horizontal = 2
+text = "Mouse Sensitivity"
+label_settings = SubResource("LabelSettings_labj1")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.5
+offset_top = 33.0
+offset_right = 225.5
+offset_bottom = 68.0
+grow_horizontal = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_lwwgp")
+
+[node name="AntiMurderButton" type="CheckButton" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = 45.0
+offset_right = 388.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/h_separation = 8
+theme_override_fonts/font = ExtResource("1_cr101")
+theme_override_constants/check_v_offset = -8
+text = "Disable photosensitive
+screen effects"
+
+[node name="EraseSaveDataButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -362.0
+offset_top = -202.0
+offset_right = -11.0
+offset_bottom = -148.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cr101")
+text = "Erase recorded times"
+
+[node name="MainMenuButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -202.0
+offset_top = -114.0
+offset_right = 202.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_cr101")
+theme_override_font_sizes/font_size = 20
+text = "return to main menu"
+
+[node name="ConfirmPanel" type="Panel" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -479.0
+offset_top = -192.0
+offset_right = 479.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bgjg7")
+
+[node name="WarningLabel" type="Label" parent="Panel/ConfirmPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -455.0
+offset_top = -82.0
+offset_right = 455.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You are about to delete all saved race data. 
+This action cannot be undone.
+
+ Proceed?"
+label_settings = SubResource("LabelSettings_48ojb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YesButton" type="Button" parent="Panel/ConfirmPanel/WarningLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -207.0
+offset_top = 44.0
+offset_right = -39.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_cr101")
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="Panel/ConfirmPanel/WarningLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 44.0
+offset_right = 197.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_cr101")
+text = "No"
+
+[node name="DeletedPanel" type="Panel" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -479.0
+offset_top = -192.0
+offset_right = 479.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bgjg7")
+
+[node name="DeletedLabel" type="Label" parent="Panel/DeletedPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -455.0
+offset_top = -82.0
+offset_right = 455.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Saved race data has been deleted."
+label_settings = SubResource("LabelSettings_48ojb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitDeletedButton" type="Button" parent="Panel/DeletedPanel/DeletedLabel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = 16.0
+offset_right = 84.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("1_cr101")
+text = "sick"
+
+[connection signal="value_changed" from="Panel/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="Panel/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="toggled" from="Panel/AntiMurderButton" to="." method="_on_anti_murder_button_toggled"]
+[connection signal="pressed" from="Panel/EraseSaveDataButton" to="." method="_on_erase_save_data_button_pressed"]
+[connection signal="pressed" from="Panel/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Panel/ConfirmPanel/WarningLabel/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Panel/ConfirmPanel/WarningLabel/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="Panel/DeletedPanel/DeletedLabel/ExitDeletedButton" to="." method="_on_exit_deleted_button_pressed"]

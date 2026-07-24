@@ -7,6 +7,7 @@ static var car: int = 0
 static var mouse_sensitivity: float = 0.25
 static var volume_modifier: float = 1.0
 static var do_flashing: bool = true
+static var is_racing: bool = false
 
 static var skin_shader
 
