@@ -22,6 +22,7 @@ func _on_volume_slider_value_changed(value: float) -> void:
 	if !in_settings or in_deletescreen: return
 	AudioManager.play_storedsfx(0)
 	Global.volume_modifier = value
+	AudioManager.adjust_volume()
 
 func _on_sensitivity_slider_value_changed(value: float) -> void:
 	if !in_settings or in_deletescreen: return
