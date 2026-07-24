@@ -1,17 +1,50 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtux1dbyo62n0"]
+[gd_scene load_steps=11 format=3 uid="uid://dtux1dbyo62n0"]
 
 [ext_resource type="PackedScene" uid="uid://texdxws7m2ae" path="res://assets/man.glb" id="1_gm3yb"]
 [ext_resource type="Script" uid="uid://cbprb2m5u64od" path="res://script/person.gd" id="2_fo7j3"]
+[ext_resource type="Shader" uid="uid://by8vkleykqr7g" path="res://assets/resource/outline.gdshader" id="3_62b7t"]
 [ext_resource type="Shader" uid="uid://cfd06tbvmjnar" path="res://assets/resource/toon.gdshader" id="3_fo7j3"]
-[ext_resource type="Texture2D" uid="uid://cab7brxstswrk" path="res://assets/man/man_business1.png" id="4_pgnoa"]
+[ext_resource type="Texture2D" uid="uid://cemt1pd2v4qhr" path="res://assets/headgear.png" id="4_pgnoa"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgnoa"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogi77"]
 render_priority = 0
+shader = ExtResource("3_62b7t")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.1499999966472
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo7j3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ogi77")
+shader = ExtResource("3_fo7j3")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/rim_color = Color(0, 0, 0, 1)
+shader_parameter/rim_width = 12.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_62b7t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qbmn"]
+render_priority = 0
+shader = ExtResource("3_62b7t")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.1499999966472
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reudx"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6qbmn")
 shader = ExtResource("3_fo7j3")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/albedo_texture = ExtResource("4_pgnoa")
 shader_parameter/clamp_diffuse_to_max = true
-shader_parameter/cuts = 3
+shader_parameter/cuts = 2
 shader_parameter/wrap = 0.0
 shader_parameter/steepness = 1.0
 shader_parameter/use_attenuation = true
@@ -26,24 +59,38 @@ shader_parameter/rim_width = 12.0
 script = ExtResource("2_fo7j3")
 
 [node name="Skeleton3D" parent="metarig" index="0"]
-bones/0/position = Vector3(0, 6.0365076, -0.3299488)
-bones/2/rotation = Quaternion(-0.07746412, 0, 0, 0.99699515)
-bones/3/rotation = Quaternion(0.0016271502, 0, 0, 0.9999987)
-bones/5/rotation = Quaternion(-0.046980996, -1.19077704e-07, -5.6005707e-09, 0.9988959)
-bones/7/rotation = Quaternion(0.1315547, 0.29256785, 0.14779481, 0.93555015)
-bones/8/rotation = Quaternion(0.8012806, -0.40428656, 0.2388528, 0.37074414)
-bones/9/rotation = Quaternion(0.15257111, -0.0127999745, -0.018017443, 0.9880454)
-bones/11/rotation = Quaternion(0.13155481, -0.29256776, -0.14779492, 0.93555015)
-bones/12/rotation = Quaternion(0.8012806, 0.40428656, -0.2388528, 0.37074414)
-bones/13/rotation = Quaternion(0.15257113, 0.012799986, 0.018017428, 0.9880454)
-bones/16/rotation = Quaternion(0.9850308, 0.053596675, -0.00889207, 0.16359378)
-bones/17/rotation = Quaternion(0.09434611, 0.0070997537, 0.036671575, 0.99483854)
-bones/18/rotation = Quaternion(-0.3828858, -0.12520139, -0.061931983, 0.9131744)
-bones/19/rotation = Quaternion(0.010696583, 0.9083547, -0.4180482, -0.003608669)
-bones/20/rotation = Quaternion(0.9850308, -0.053596675, 0.00889207, 0.16359378)
-bones/21/rotation = Quaternion(0.09434611, -0.0070997537, -0.036671575, 0.99483854)
-bones/22/rotation = Quaternion(-0.38288587, 0.12520133, 0.06193198, 0.9131744)
-bones/23/rotation = Quaternion(-0.010696583, 0.9083547, -0.41804823, 0.0036086643)
+bones/0/position = Vector3(-4.5960696e-16, 2.8393223, -1.6175156)
+bones/0/rotation = Quaternion(0.20405592, -2.2143871e-18, -1.7459817e-17, 0.97895926)
+bones/1/rotation = Quaternion(0.021373136, -3.7109175e-18, -1.9528485e-17, 0.99977165)
+bones/2/rotation = Quaternion(0.098276675, -1.8433375e-18, -4.028643e-17, 0.9951592)
+bones/3/rotation = Quaternion(0.0016271432, -8.1910386e-25, -4.964423e-24, 0.9999987)
+bones/4/rotation = Quaternion(0.031322006, 1.1915083e-07, 3.7338745e-09, 0.9995094)
+bones/5/rotation = Quaternion(-0.20004316, -1.16799775e-07, -2.3847004e-08, 0.9797871)
+bones/6/rotation = Quaternion(-0.49716368, -0.46310312, -0.43960822, 0.58745927)
+bones/7/rotation = Quaternion(0.21413909, 0.5228576, -0.5600018, 0.6059393)
+bones/8/rotation = Quaternion(0.72380495, -0.3316744, 0.1292208, 0.5911011)
+bones/9/rotation = Quaternion(0.011074388, 0.009980959, -0.010641087, 0.9998323)
+bones/10/rotation = Quaternion(-0.49716368, 0.46310312, 0.43960822, 0.58745927)
+bones/11/rotation = Quaternion(0.22543412, -0.52778417, 0.5578636, 0.5995095)
+bones/12/rotation = Quaternion(0.22760455, -0.23525672, 0.21402726, 0.92034936)
+bones/13/rotation = Quaternion(-0.02324225, 0.029886348, 0.30309746, 0.9522072)
+bones/16/rotation = Quaternion(0.7422831, 0.14776516, -0.26561117, 0.5971867)
+bones/17/rotation = Quaternion(0.9107971, 0.065895796, -0.009328936, 0.4074546)
+bones/18/rotation = Quaternion(-0.8631227, -0.010102411, 0.029946301, 0.5040044)
+bones/19/rotation = Quaternion(0.010696583, 0.9083547, -0.4180482, -0.0036086668)
+bones/20/rotation = Quaternion(0.7422831, -0.14776516, 0.26561117, 0.5971867)
+bones/21/rotation = Quaternion(0.9107971, -0.06589578, 0.009328936, 0.4074546)
+bones/22/rotation = Quaternion(-0.8631227, 0.010102412, -0.029946309, 0.5040044)
+bones/23/rotation = Quaternion(-0.010696597, 0.9083547, -0.4180482, 0.0036086624)
 
-[node name="Cube" parent="metarig/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_pgnoa")
+[node name="skin" parent="metarig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_fo7j3")
+
+[node name="Head" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="1"]
+transform = Transform3D(1, 7.1054274e-15, -1.4210855e-14, -2.842171e-14, 0.9511907, -0.30860272, 5.684342e-14, 0.3086026, 0.9511908, -1.3464133e-14, 6.5972824, 0.84919155)
+bone_name = "spine.006"
+bone_idx = 5
+
+[node name="Mesh" type="MeshInstance3D" parent="metarig/Skeleton3D/Head" index="0"]
+mesh = SubResource("TorusMesh_62b7t")
+surface_material_override/0 = SubResource("ShaderMaterial_reudx")

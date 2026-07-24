@@ -1,13 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://cu1wx8yoag5pk"]
+[gd_scene load_steps=28 format=3 uid="uid://cu1wx8yoag5pk"]
 
 [ext_resource type="Script" uid="uid://c8tto3cl7qepm" path="res://test_room.gd" id="1_ju58f"]
 [ext_resource type="PackedScene" uid="uid://cqs7wirp2qphh" path="res://scenes/camera.tscn" id="2_arrdh"]
-[ext_resource type="ArrayMesh" uid="uid://fmvglmhc26lk" path="res://assets/man/man_base.obj" id="3_arrdh"]
-[ext_resource type="Texture2D" uid="uid://u6k8r6c0ghta" path="res://assets/man/photographer.png" id="4_f0xav"]
 [ext_resource type="Script" uid="uid://q0xut2hwyv5x" path="res://script/car_controllertest.gd" id="4_sqxie"]
 [ext_resource type="ArrayMesh" uid="uid://dfdvrs3dw2pkl" path="res://assets/car.obj" id="5_sqxie"]
+[ext_resource type="PackedScene" uid="uid://cqgo0rwa4ybkx" path="res://scenes/man_physics.tscn" id="6_bd7ek"]
 [ext_resource type="Material" uid="uid://dcgasbekaxcic" path="res://assets/car0texture.tres" id="7_3vbl4"]
-[ext_resource type="FontFile" uid="uid://b2b36wceawxot" path="res://assets/resource/Pointless.ttf" id="8_3vbl4"]
+[ext_resource type="Script" uid="uid://c2267tig41141" path="res://script/npc_path.gd" id="7_f0xav"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oqbmf"]
 specular_mode = 2
@@ -22,17 +21,6 @@ size = Vector3(300, 28.788086, 300)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oqbmf"]
 size = Vector2(500, 500)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_arrdh"]
-friction = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i507p"]
-shading_mode = 0
-albedo_texture = ExtResource("4_f0xav")
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_sqxie"]
-height = 9.462402
-radius = 1.6806641
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sqxie"]
 bounce = 0.5
@@ -76,66 +64,15 @@ cull_mode = 2
 depth_draw_mode = 1
 shading_mode = 0
 
-[sub_resource type="LabelSettings" id="LabelSettings_6r6vx"]
-font = ExtResource("8_3vbl4")
-font_size = 48
-font_color = Color(1, 0, 0, 1)
-outline_size = 8
+[sub_resource type="SphereShape3D" id="SphereShape3D_f0xav"]
+radius = 7.36595
+
+[sub_resource type="Animation" id="Animation_choun"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_85g3d"]
 resource_name = "hit_a_civillian"
 length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fatality:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0667, 0.3333, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Fatality:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_choun"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fatality:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Fatality:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ya4ey"]
 _data = {
@@ -143,15 +80,30 @@ _data = {
 &"hit_a_civillian": SubResource("Animation_85g3d")
 }
 
+[sub_resource type="Curve3D" id="Curve3D_3vbl4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 95.01508, 0, -23.281845, 0, 0, 0, 0, 0, 0, 99.31806, 0, 90.61043, 0, 0, 0, 0, 0, 0, 20, 0, 116.30751, 0, 0, 0, 0, 0, 0, -30.271301, 0, 76.703384, 0, 0, 0, 0, 0, 0, -17.407589, 0, 20.560953, 0, 0, 0, 0, 0, 0, 0, 0, -33.035046, 0, 0, 0, 0, 0, 0, 38.383606, 0, -50.96837),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="SphereMesh" id="SphereMesh_f0xav"]
+radius = 2.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i507p"]
+shading_mode = 0
+
 [node name="TestRoom" type="Node3D" node_paths=PackedStringArray("car_root")]
 script = ExtResource("1_ju58f")
-car_root = NodePath("Rotator")
+car_root = NodePath("Car")
 
 [node name="Room" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40.844933, 0)
 
 [node name="mesh" type="MeshInstance3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.09768677)
+visible = false
 mesh = SubResource("BoxMesh_ju58f")
 skeleton = NodePath("../..")
 
@@ -195,108 +147,93 @@ distance_fade_begin = 0.0
 distance_fade_length = 4096.0
 omni_range = 435.39923
 
-[node name="RigidBody3D3" type="RigidBody3D" parent="."]
-transform = Transform3D(0.3729878, 0, 0.92783624, 0, 1, 0, -0.92783624, 0, 0.3729878, -36.769157, -8.41194, 36.003242)
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_arrdh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D3"]
-mesh = ExtResource("3_arrdh")
-surface_material_override/0 = SubResource("StandardMaterial3D_i507p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9581146, 0)
-shape = SubResource("CylinderShape3D_sqxie")
-
-[node name="RigidBody3D4" type="RigidBody3D" parent="."]
-transform = Transform3D(0.15005307, 0, 0.988678, 0, 1, 0, -0.988678, 0, 0.15005307, -36.769157, -8.41194, 46.194725)
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_arrdh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D4"]
-mesh = ExtResource("3_arrdh")
-surface_material_override/0 = SubResource("StandardMaterial3D_i507p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9581146, 0)
-shape = SubResource("CylinderShape3D_sqxie")
-
-[node name="RigidBody3D5" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.07701482, 0, 0.99702996, 0, 1, 0, -0.99702996, 0, -0.07701482, -36.769157, -8.41194, 57.10463)
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_arrdh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D5"]
-mesh = ExtResource("3_arrdh")
-surface_material_override/0 = SubResource("StandardMaterial3D_i507p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9581146, 0)
-shape = SubResource("CylinderShape3D_sqxie")
-
-[node name="Rotator" type="RigidBody3D" parent="." node_paths=PackedStringArray("_camera_pivot")]
+[node name="Car" type="RigidBody3D" parent="." node_paths=PackedStringArray("_camera_pivot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.797707, -2.172947, 53.470215)
 mass = 40.0
 physics_material_override = SubResource("PhysicsMaterial_sqxie")
 script = ExtResource("4_sqxie")
 _camera_pivot = NodePath("../RaceCamera")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rotator"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.356, 0)
 shape = SubResource("SphereShape3D_bd7ek")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Rotator"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Car"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 mesh = ExtResource("5_sqxie")
 surface_material_override/0 = ExtResource("7_3vbl4")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Rotator"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Car"]
 transform = Transform3D(-4.371139e-08, -1, 4.371139e-08, 0, -4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0, -1.4457326, 0.5883789)
 shape = SubResource("CapsuleShape3D_f0xav")
 
-[node name="Z" type="MeshInstance3D" parent="Rotator"]
+[node name="Z" type="MeshInstance3D" parent="Car"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 8)
 mesh = SubResource("BoxMesh_bd7ek")
 surface_material_override/0 = SubResource("StandardMaterial3D_f0xav")
 
-[node name="Y" type="MeshInstance3D" parent="Rotator"]
+[node name="Y" type="MeshInstance3D" parent="Car"]
 transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 8, 0)
 mesh = SubResource("BoxMesh_bd7ek")
 surface_material_override/0 = SubResource("StandardMaterial3D_3vbl4")
 
-[node name="X" type="MeshInstance3D" parent="Rotator"]
+[node name="X" type="MeshInstance3D" parent="Car"]
 transform = Transform3D(-4.371139e-08, 1, 8.742278e-08, 1, 4.371139e-08, 3.821371e-15, 0, 8.742278e-08, -1, 8, 0, 0)
 mesh = SubResource("BoxMesh_bd7ek")
 surface_material_override/0 = SubResource("StandardMaterial3D_6r6vx")
 
-[node name="Root" type="MeshInstance3D" parent="Rotator"]
+[node name="Root" type="MeshInstance3D" parent="Car"]
 mesh = SubResource("SphereMesh_i507p")
 surface_material_override/0 = SubResource("StandardMaterial3D_2602c")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Area3D" type="Area3D" parent="Car"]
 
-[node name="Fatality" type="Label" parent="."]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -193.0
-offset_top = 36.0
-offset_right = 193.0
-offset_bottom = 159.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "OH THE HUMANITY!
-+10 PTS"
-label_settings = SubResource("LabelSettings_6r6vx")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car/Area3D"]
+shape = SubResource("SphereShape3D_f0xav")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ya4ey")
 }
+
+[node name="Person2" parent="." node_paths=PackedStringArray("path") instance=ExtResource("6_bd7ek")]
+type = 0
+head_type = 2
+path = NodePath("../Path3D/PathFollow3D")
+play_animation = 1
+appearance = 2
+
+[node name="Person" parent="." instance=ExtResource("6_bd7ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.339159, 71.37019)
+type = 1
+head_type = 1
+play_animation = 0
+appearance = 0
+
+[node name="Person3" parent="." instance=ExtResource("6_bd7ek")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.339159, 53.471962)
+type = 1
+head_type = 2
+play_animation = 6
+appearance = 1
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.556437, 0)
+curve = SubResource("Curve3D_3vbl4")
+script = ExtResource("7_f0xav")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.9992835, 0, 0.03775416, 0, 1, 0, -0.03775416, 0, 0.9992835, 95.01508, 0, -23.281845)
+rotation_mode = 1
+use_model_front = true
+
+[node name="debug" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0, 0)
+mesh = SubResource("SphereMesh_f0xav")
+surface_material_override/0 = SubResource("StandardMaterial3D_i507p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8822421, 0.47079632, 0, -0.47079632, 0.8822421, 0, 0, 0)
+light_energy = 3.0
+
+[connection signal="body_entered" from="Car/Area3D" to="Car" method="_on_body_entered"]

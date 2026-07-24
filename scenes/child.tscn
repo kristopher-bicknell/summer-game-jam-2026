@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://bycg6kafwck4b"]
+
+[ext_resource type="PackedScene" uid="uid://texdxws7m2ae" path="res://assets/man.glb" id="1_m3672"]
+[ext_resource type="Script" uid="uid://cbprb2m5u64od" path="res://script/person.gd" id="2_ik82l"]
+[ext_resource type="Shader" uid="uid://by8vkleykqr7g" path="res://assets/resource/outline.gdshader" id="3_ykuey"]
+[ext_resource type="Shader" uid="uid://cfd06tbvmjnar" path="res://assets/resource/toon.gdshader" id="4_ic702"]
+[ext_resource type="ArrayMesh" uid="uid://8ksd3arkmmfw" path="res://assets/child/hat_propeller.obj" id="5_ik82l"]
+[ext_resource type="Texture2D" uid="uid://dbpfb2oxhm4jy" path="res://assets/water.jpg" id="6_ykuey"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyrik"]
+render_priority = 0
+shader = ExtResource("3_ykuey")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.0999999977648
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k3eyv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_jyrik")
+shader = ExtResource("4_ic702")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/shadow_color = Color(46, 46, 46, 255)
+shader_parameter/rim_color = Color(0, 0, 0, 1)
+shader_parameter/rim_width = 12.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j080x"]
+render_priority = 0
+shader = ExtResource("3_ykuey")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.0499999988824
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_maykg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_j080x")
+shader = ExtResource("4_ic702")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("6_ykuey")
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/rim_color = Color(0, 0, 0, 1)
+shader_parameter/rim_width = 12.0
+
+[node name="child" instance=ExtResource("1_m3672")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+script = ExtResource("2_ik82l")
+
+[node name="Skeleton3D" parent="metarig" index="0"]
+bones/0/position = Vector3(0, 6.0365076, -0.3299488)
+bones/2/rotation = Quaternion(-0.07746412, 0, 0, 0.99699515)
+bones/3/rotation = Quaternion(0.0016271502, 0, 0, 0.9999987)
+bones/4/rotation = Quaternion(0.05495141, 1.19029174e-07, 6.550719e-09, 0.998489)
+bones/5/rotation = Quaternion(-0.046980996, -1.19077704e-07, -5.6005707e-09, 0.9988959)
+bones/7/rotation = Quaternion(-0.24718283, 0.35757318, -0.6421898, 0.63137496)
+bones/8/rotation = Quaternion(-0.01581389, -0.06357553, 0.010372865, 0.99779785)
+bones/9/rotation = Quaternion(0.011074381, 0.009980968, -0.010641085, 0.9998323)
+bones/11/rotation = Quaternion(-0.49042827, -0.7588711, 0.3455529, 0.25335366)
+bones/12/rotation = Quaternion(-0.015813839, 0.06357553, -0.010372849, 0.99779785)
+bones/13/rotation = Quaternion(0.011074377, -0.009980961, 0.0106410775, 0.9998323)
+bones/16/rotation = Quaternion(0.98018056, 0.05332951, 0.010374583, -0.19051097)
+bones/17/rotation = Quaternion(0.09434614, 0.0070997532, 0.03667157, 0.99483854)
+bones/18/rotation = Quaternion(-0.3943643, 0.012800393, -0.020622548, 0.9186336)
+bones/19/rotation = Quaternion(0.0106965965, 0.9083547, -0.4180482, -0.0036086643)
+bones/20/rotation = Quaternion(0.91019124, -0.049526975, 0.022332791, 0.41060963)
+bones/21/rotation = Quaternion(0.09434611, -0.0070997565, -0.036671568, 0.99483854)
+bones/22/rotation = Quaternion(-0.3943643, -0.012800392, 0.020622551, 0.9186336)
+bones/23/rotation = Quaternion(-0.010696588, 0.9083547, -0.4180482, 0.0036086608)
+
+[node name="skin" parent="metarig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_k3eyv")
+
+[node name="Head" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="1"]
+transform = Transform3D(1, -1.7763568e-15, -5.684342e-14, -1.7763568e-15, 0.99992025, 0.012601599, 4.2632564e-14, -0.012601599, 0.99992037, -1.4586471e-14, 10.526447, -0.00021497533)
+bone_name = "spine.006"
+bone_idx = 5
+
+[node name="Mesh" type="MeshInstance3D" parent="metarig/Skeleton3D/Head" index="0"]
+mesh = ExtResource("5_ik82l")
+surface_material_override/0 = SubResource("ShaderMaterial_maykg")

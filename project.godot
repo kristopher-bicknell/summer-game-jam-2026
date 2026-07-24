@@ -14,11 +14,13 @@ config/name="Racer2K"
 config/version="0.9"
 run/main_scene="uid://bxgifpudsf67e"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dvqudutkramuq"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 Global="*res://script/global.gd"
+SaveData="*res://script/save_data.gd"
 
 [editor]
 

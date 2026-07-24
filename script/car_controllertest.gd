@@ -5,13 +5,16 @@ extends RigidBody3D
 var _camera: Camera3D
 
 var _is_colliding := false
-var _camera_input_direction := Vector2.ZERO
 signal hit_a_civillian
 
 const TARGET_SPEED = 500
 
 func _ready():
-	_camera = _camera_pivot.get_camera()
+	set_camera()
+
+func set_camera():
+	if _camera_pivot:
+		_camera = _camera_pivot.get_camera()
 
 func _physics_process(delta: float) -> void:
 	if !_camera or !_camera_pivot: return
@@ -41,7 +44,9 @@ func _on_body_entered(body: Node) -> void:
 		if body.is_hit: return
 		if linear_velocity.length() * 1.5 < 20.0: return
 		body.is_hit = true
-		hit_a_civillian.emit()
+		#reusing the PersonModifier class for fucking rocks, lol. used to prevnet those from being human
+		if body.is_person:
+			hit_a_civillian.emit()
 
 func _on_body_exited(body: Node) -> void:
 	if body is StaticBody3D:

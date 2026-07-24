@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://clpsybke8dmcu"]
+
+[ext_resource type="PackedScene" uid="uid://cdv3kibvnw2lp" path="res://assets/woman.glb" id="1_so33h"]
+[ext_resource type="Script" uid="uid://cbprb2m5u64od" path="res://script/person.gd" id="2_lbwyf"]
+[ext_resource type="Shader" uid="uid://cfd06tbvmjnar" path="res://assets/resource/toon.gdshader" id="3_kset0"]
+[ext_resource type="Shader" uid="uid://by8vkleykqr7g" path="res://assets/resource/outline.gdshader" id="3_lcgeh"]
+[ext_resource type="Texture2D" uid="uid://cemt1pd2v4qhr" path="res://assets/headgear.png" id="4_311h6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k01w1"]
+render_priority = 0
+shader = ExtResource("3_lcgeh")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.1499999966472
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_311h6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_k01w1")
+shader = ExtResource("3_kset0")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/shadow_color = Color(46, 46, 46, 255)
+shader_parameter/rim_color = Color(0, 0, 0, 1)
+shader_parameter/rim_width = 12.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_lcgeh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6l1qn"]
+render_priority = 0
+shader = ExtResource("3_lcgeh")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/thickness = 0.1499999966472
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kx0l6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_6l1qn")
+shader = ExtResource("3_kset0")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("4_311h6")
+shader_parameter/clamp_diffuse_to_max = true
+shader_parameter/cuts = 2
+shader_parameter/wrap = 0.0
+shader_parameter/steepness = 1.0
+shader_parameter/use_attenuation = true
+shader_parameter/use_specular = true
+shader_parameter/specular_strength = 1.0
+shader_parameter/specular_shininess = 16.0
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader_parameter/rim_color = Color(0, 0, 0, 1)
+shader_parameter/rim_width = 12.0
+
+[node name="woman" instance=ExtResource("1_so33h")]
+script = ExtResource("2_lbwyf")
+
+[node name="skin" parent="metarig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_311h6")
+
+[node name="Head" type="BoneAttachment3D" parent="metarig/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, -4.2632564e-14, -3.5527137e-15, 0.99992025, 0.012601621, 1.4210855e-14, -0.012601629, 0.99992037, -1.29553105e-14, 10.526447, -0.00021491945)
+bone_name = "spine.006"
+bone_idx = 5
+
+[node name="Mesh" type="MeshInstance3D" parent="metarig/Skeleton3D/Head" index="0"]
+mesh = SubResource("TorusMesh_lcgeh")
+surface_material_override/0 = SubResource("ShaderMaterial_kx0l6")

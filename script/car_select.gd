@@ -5,7 +5,7 @@ extends Node3D
 @onready var cars = [$CarDisplayPivot/Car1, $CarDisplayPivot/Car2, $CarDisplayPivot/Car3]
 @onready var color_gradient = preload("res://assets/resource/colorgradient.tres")
 
-
+signal select_car
 var current_car: int = 0
 var goal_rotation: float = 0
 var car_data = [
@@ -56,4 +56,4 @@ func _on_next_button_pressed() -> void:
 	$AnimationPlayer.speed_scale = 1.0
 	$AnimationPlayer.play("car"+str(current_car)+"_select")
 	await get_tree().create_timer(0.8).timeout
-	queue_free()
+	select_car.emit()

@@ -1,6 +1,7 @@
 class_name RaceUI
 extends Control
 
+var cum_time: int = 0
 var minutes: int = 0
 var seconds: int = 0
 var mseconds: int = 0
@@ -14,6 +15,7 @@ func _process(delta: float) -> void:
 
 func _on_m_seconds_timer_timeout() -> void:
 	mseconds += 1
+	cum_time += 1
 	fix_time()
 
 func fix_time():
@@ -27,3 +29,6 @@ func fix_time():
 func increment_manslaughter():
 	manslaughter += 1
 	$Label.text = "People killed: " + str(manslaughter)
+
+func end_race():
+	SaveData.save_race_data(Global.car, 1, cum_time, Time.get_datetime_string_from_system(true))

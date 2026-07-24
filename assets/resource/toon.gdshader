@@ -19,7 +19,7 @@ uniform float specular_shininess : hint_range(0.0f, 32.0f) = 16.0f;
 uniform sampler2D specular_map : source_color;
 
 
-uniform vec4 shadow_color: source_color;
+uniform vec4 shadow_color: source_color = vec4(46.0, 46.0, 46.0, 255.0); //46,46,46,255
 uniform vec4 rim_color : source_color;
 
 uniform float rim_width : hint_range(0.0f, 16.0f) = 12.0f;
